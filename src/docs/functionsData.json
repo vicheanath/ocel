@@ -1,0 +1,3202 @@
+{
+  "categories": [
+    {
+      "name": "database",
+      "displayName": "Database",
+      "functions": [
+        {
+          "name": "DSUM",
+          "description": "Returns the sum of selected database entries",
+          "syntax": "DSUM(database, field, criteria)",
+          "category": "Database",
+          "examples": [
+            "DSUM(A1:E10, \"Sales\", G1:G2)"
+          ],
+          "sourceFile": "databaseFunctions.ts"
+        },
+        {
+          "name": "DCOUNT",
+          "description": "Counts the cells that contain numbers in a database",
+          "syntax": "DCOUNT(database, field, criteria)",
+          "category": "Database",
+          "examples": [
+            "DCOUNT(A1:E10, \"Age\", G1:G2)"
+          ],
+          "sourceFile": "databaseFunctions.ts"
+        },
+        {
+          "name": "DCOUNTA",
+          "description": "Counts nonblank cells in a database",
+          "syntax": "DCOUNTA(database, field, criteria)",
+          "category": "Database",
+          "examples": [
+            "DCOUNTA(A1:E10, \"Name\", G1:G2)"
+          ],
+          "sourceFile": "databaseFunctions.ts"
+        },
+        {
+          "name": "DAVERAGE",
+          "description": "Returns the average of selected database entries",
+          "syntax": "DAVERAGE(database, field, criteria)",
+          "category": "Database",
+          "examples": [
+            "DAVERAGE(A1:E10, \"Score\", G1:G2)"
+          ],
+          "sourceFile": "databaseFunctions.ts"
+        },
+        {
+          "name": "DMAX",
+          "description": "Returns the maximum value among selected database entries",
+          "syntax": "DMAX(database, field, criteria)",
+          "category": "Database",
+          "examples": [
+            "DMAX(A1:E10, \"Sales\", G1:G2)"
+          ],
+          "sourceFile": "databaseFunctions.ts"
+        },
+        {
+          "name": "DMIN",
+          "description": "Returns the minimum value among selected database entries",
+          "syntax": "DMIN(database, field, criteria)",
+          "category": "Database",
+          "examples": [
+            "DMIN(A1:E10, \"Price\", G1:G2)"
+          ],
+          "sourceFile": "databaseFunctions.ts"
+        },
+        {
+          "name": "DPRODUCT",
+          "description": "Multiplies the values in a particular field of records that match the criteria",
+          "syntax": "DPRODUCT(database, field, criteria)",
+          "category": "Database",
+          "examples": [
+            "DPRODUCT(A1:E10, \"Quantity\", G1:G2)"
+          ],
+          "sourceFile": "databaseFunctions.ts"
+        },
+        {
+          "name": "DSTDEV",
+          "description": "Estimates the standard deviation based on a sample of selected database entries",
+          "syntax": "DSTDEV(database, field, criteria)",
+          "category": "Database",
+          "examples": [
+            "DSTDEV(A1:E10, \"Score\", G1:G2)"
+          ],
+          "sourceFile": "databaseFunctions.ts"
+        },
+        {
+          "name": "DVAR",
+          "description": "Estimates variance based on a sample of selected database entries",
+          "syntax": "DVAR(database, field, criteria)",
+          "category": "Database",
+          "examples": [
+            "DVAR(A1:E10, \"Sales\", G1:G2)"
+          ],
+          "sourceFile": "databaseFunctions.ts"
+        },
+        {
+          "name": "DGET",
+          "description": "Extracts from a database a single record that matches the specified criteria",
+          "syntax": "DGET(database, field, criteria)",
+          "category": "Database",
+          "examples": [
+            "DGET(A1:E10, \"Name\", G1:G2)"
+          ],
+          "sourceFile": "databaseFunctions.ts"
+        }
+      ],
+      "description": "Functions for working with structured data tables and performing database-like operations."
+    },
+    {
+      "name": "date-time",
+      "displayName": "Date & Time",
+      "functions": [
+        {
+          "name": "TODAY",
+          "description": "Returns the current date",
+          "syntax": "TODAY()",
+          "category": "Date & Time",
+          "examples": [
+            "TODAY()"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "NOW",
+          "description": "Returns the current date and time",
+          "syntax": "NOW()",
+          "category": "Date & Time",
+          "examples": [
+            "NOW()"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "DATE",
+          "description": "Returns a date from year, month, and day values",
+          "syntax": "DATE(year, month, day)",
+          "category": "Date & Time",
+          "examples": [
+            "DATE(2023, 12, 25)",
+            "DATE(A1, B1, C1)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "TIME",
+          "description": "Returns a time from hour, minute, and second values",
+          "syntax": "TIME(hour, minute, second)",
+          "category": "Date & Time",
+          "examples": [
+            "TIME(15, 30, 0)",
+            "TIME(A1, B1, C1)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "YEAR",
+          "description": "Returns the year of a date",
+          "syntax": "YEAR(serial_number)",
+          "category": "Date & Time",
+          "examples": [
+            "YEAR(TODAY())",
+            "YEAR(A1)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "MONTH",
+          "description": "Returns the month of a date",
+          "syntax": "MONTH(serial_number)",
+          "category": "Date & Time",
+          "examples": [
+            "MONTH(TODAY())",
+            "MONTH(A1)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "DAY",
+          "description": "Returns the day of a date",
+          "syntax": "DAY(serial_number)",
+          "category": "Date & Time",
+          "examples": [
+            "DAY(TODAY())",
+            "DAY(A1)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "HOUR",
+          "description": "Returns the hour of a time value",
+          "syntax": "HOUR(serial_number)",
+          "category": "Date & Time",
+          "examples": [
+            "HOUR(NOW())",
+            "HOUR(A1)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "MINUTE",
+          "description": "Returns the minutes of a time value",
+          "syntax": "MINUTE(serial_number)",
+          "category": "Date & Time",
+          "examples": [
+            "MINUTE(NOW())",
+            "MINUTE(A1)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "SECOND",
+          "description": "Returns the seconds of a time value",
+          "syntax": "SECOND(serial_number)",
+          "category": "Date & Time",
+          "examples": [
+            "SECOND(NOW())",
+            "SECOND(A1)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "WEEKDAY",
+          "description": "Returns the day of the week for a date",
+          "syntax": "WEEKDAY(serial_number, [return_type])",
+          "category": "Date & Time",
+          "examples": [
+            "WEEKDAY(TODAY())",
+            "WEEKDAY(A1, 2)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "DATEDIF",
+          "description": "Calculates the difference between two dates",
+          "syntax": "DATEDIF(start_date, end_date, unit)",
+          "category": "Date & Time",
+          "examples": [
+            "DATEDIF(A1, B1, \"D\")",
+            "DATEDIF(DATE(2020,1,1), TODAY(), \"Y\")"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "WORKDAY",
+          "description": "Returns a date that is a specified number of working days from the start date",
+          "syntax": "WORKDAY(start_date, days, [holidays])",
+          "category": "Date & Time",
+          "examples": [
+            "WORKDAY(TODAY(), 10)",
+            "WORKDAY(A1, 5, B1:B10)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "DATEVALUE",
+          "description": "Converts a date in the form of text to a serial number",
+          "syntax": "DATEVALUE(date_text)",
+          "category": "Date & Time",
+          "examples": [
+            "DATEVALUE(\"1/1/2008\")",
+            "DATEVALUE(\"30-Dec-2008\")"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "TIMEVALUE",
+          "description": "Converts a time in the form of text to a serial number",
+          "syntax": "TIMEVALUE(time_text)",
+          "category": "Date & Time",
+          "examples": [
+            "TIMEVALUE(\"3:32 AM\")",
+            "TIMEVALUE(\"22:48:00\")"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "DAYS",
+          "description": "Returns the number of days between two dates",
+          "syntax": "DAYS(end_date, start_date)",
+          "category": "Date & Time",
+          "examples": [
+            "DAYS(\"3/15/11\", \"2/1/11\")"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "DAYS360",
+          "description": "Calculates the number of days between two dates based on a 360-day year",
+          "syntax": "DAYS360(start_date, end_date, [method])",
+          "category": "Date & Time",
+          "examples": [
+            "DAYS360(\"1/30/2011\", \"2/1/2011\")"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "EDATE",
+          "description": "Returns the serial number of the date that is the indicated number of months before or after the start date",
+          "syntax": "EDATE(start_date, months)",
+          "category": "Date & Time",
+          "examples": [
+            "EDATE(\"1/15/2011\", -1)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "EOMONTH",
+          "description": "Returns the serial number of the last day of the month before or after a specified number of months",
+          "syntax": "EOMONTH(start_date, months)",
+          "category": "Date & Time",
+          "examples": [
+            "EOMONTH(\"1/1/2011\", -3)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "NETWORKDAYS",
+          "description": "Returns the number of whole workdays between two dates",
+          "syntax": "NETWORKDAYS(start_date, end_date, [holidays])",
+          "category": "Date & Time",
+          "examples": [
+            "NETWORKDAYS(A2, A3)",
+            "NETWORKDAYS(TODAY(), A2, B2:B5)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "WEEKNUM",
+          "description": "Converts a serial number to a number representing where the week falls numerically with a year",
+          "syntax": "WEEKNUM(serial_number, [return_type])",
+          "category": "Date & Time",
+          "examples": [
+            "WEEKNUM(\"3/9/2012\", 2)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "ISOWEEKNUM",
+          "description": "Returns the number of the ISO week number of the year for a given date",
+          "syntax": "ISOWEEKNUM(date)",
+          "category": "Date & Time",
+          "examples": [
+            "ISOWEEKNUM(\"3/9/2012\")"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        },
+        {
+          "name": "YEARFRAC",
+          "description": "Returns the year fraction representing the number of whole days between start_date and end_date",
+          "syntax": "YEARFRAC(start_date, end_date, [basis])",
+          "category": "Date & Time",
+          "examples": [
+            "YEARFRAC(\"1/1/2012\", \"7/30/2012\", 1)"
+          ],
+          "sourceFile": "dateTimeFunctions.ts"
+        }
+      ],
+      "description": "Functions for date and time calculations, formatting, and manipulation."
+    },
+    {
+      "name": "engineering",
+      "displayName": "Engineering",
+      "functions": [
+        {
+          "name": "BIN2DEC",
+          "description": "Converts a binary number to decimal",
+          "syntax": "BIN2DEC(number)",
+          "category": "Engineering",
+          "examples": [
+            "BIN2DEC(1010)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "DEC2BIN",
+          "description": "Converts a decimal number to binary",
+          "syntax": "DEC2BIN(number, [places])",
+          "category": "Engineering",
+          "examples": [
+            "DEC2BIN(10)",
+            "DEC2BIN(10, 8)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "HEX2DEC",
+          "description": "Converts a hexadecimal number to decimal",
+          "syntax": "HEX2DEC(number)",
+          "category": "Engineering",
+          "examples": [
+            "HEX2DEC(\"FF\")"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "DEC2HEX",
+          "description": "Converts a decimal number to hexadecimal",
+          "syntax": "DEC2HEX(number, [places])",
+          "category": "Engineering",
+          "examples": [
+            "DEC2HEX(255)",
+            "DEC2HEX(255, 4)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "OCT2DEC",
+          "description": "Converts an octal number to decimal",
+          "syntax": "OCT2DEC(number)",
+          "category": "Engineering",
+          "examples": [
+            "OCT2DEC(77)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "DEC2OCT",
+          "description": "Converts a decimal number to octal",
+          "syntax": "DEC2OCT(number, [places])",
+          "category": "Engineering",
+          "examples": [
+            "DEC2OCT(64)",
+            "DEC2OCT(64, 3)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "BITAND",
+          "description": "Returns a bitwise AND of two numbers",
+          "syntax": "BITAND(number1, number2)",
+          "category": "Engineering",
+          "examples": [
+            "BITAND(13, 25)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "BITOR",
+          "description": "Returns a bitwise OR of two numbers",
+          "syntax": "BITOR(number1, number2)",
+          "category": "Engineering",
+          "examples": [
+            "BITOR(13, 25)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "BITXOR",
+          "description": "Returns a bitwise XOR of two numbers",
+          "syntax": "BITXOR(number1, number2)",
+          "category": "Engineering",
+          "examples": [
+            "BITXOR(13, 25)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "BITLSHIFT",
+          "description": "Returns a number shifted left by specified number of bits",
+          "syntax": "BITLSHIFT(number, shift_amount)",
+          "category": "Engineering",
+          "examples": [
+            "BITLSHIFT(4, 2)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "BITRSHIFT",
+          "description": "Returns a number shifted right by specified number of bits",
+          "syntax": "BITRSHIFT(number, shift_amount)",
+          "category": "Engineering",
+          "examples": [
+            "BITRSHIFT(16, 2)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "DELTA",
+          "description": "Tests whether two values are equal. Returns 1 if they are equal; returns 0 otherwise",
+          "syntax": "DELTA(number1, [number2])",
+          "category": "Engineering",
+          "examples": [
+            "DELTA(5, 4)",
+            "DELTA(5, 5)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "GESTEP",
+          "description": "Returns 1 if number ≥ step; returns 0 otherwise",
+          "syntax": "GESTEP(number, [step])",
+          "category": "Engineering",
+          "examples": [
+            "GESTEP(5, 4)",
+            "GESTEP(5, 5)",
+            "GESTEP(-4, -5)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "BIN2HEX",
+          "description": "Converts a binary number to hexadecimal",
+          "syntax": "BIN2HEX(number, [places])",
+          "category": "Engineering",
+          "examples": [
+            "BIN2HEX(11111011)",
+            "BIN2HEX(11111011, 4)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "BIN2OCT",
+          "description": "Converts a binary number to octal",
+          "syntax": "BIN2OCT(number, [places])",
+          "category": "Engineering",
+          "examples": [
+            "BIN2OCT(1001)",
+            "BIN2OCT(1001, 3)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "HEX2BIN",
+          "description": "Converts a hexadecimal number to binary",
+          "syntax": "HEX2BIN(number, [places])",
+          "category": "Engineering",
+          "examples": [
+            "HEX2BIN(\"F\")",
+            "HEX2BIN(\"F\", 8)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "HEX2OCT",
+          "description": "Converts a hexadecimal number to octal",
+          "syntax": "HEX2OCT(number, [places])",
+          "category": "Engineering",
+          "examples": [
+            "HEX2OCT(\"F\")",
+            "HEX2OCT(\"F\", 3)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "OCT2BIN",
+          "description": "Converts an octal number to binary",
+          "syntax": "OCT2BIN(number, [places])",
+          "category": "Engineering",
+          "examples": [
+            "OCT2BIN(7)",
+            "OCT2BIN(7, 3)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "OCT2HEX",
+          "description": "Converts an octal number to hexadecimal",
+          "syntax": "OCT2HEX(number, [places])",
+          "category": "Engineering",
+          "examples": [
+            "OCT2HEX(100)",
+            "OCT2HEX(100, 4)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "COMPLEX",
+          "description": "Converts real and imaginary coefficients into a complex number",
+          "syntax": "COMPLEX(real_num, i_num, [suffix])",
+          "category": "Engineering",
+          "examples": [
+            "COMPLEX(3, 4, \"j\")"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "IMREAL",
+          "description": "Returns the real coefficient of a complex number",
+          "syntax": "IMREAL(inumber)",
+          "category": "Engineering",
+          "examples": [
+            "IMREAL(\"6+9i\")",
+            "IMREAL(\"2-i\")"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "IMAGINARY",
+          "description": "Returns the imaginary coefficient of a complex number",
+          "syntax": "IMAGINARY(inumber)",
+          "category": "Engineering",
+          "examples": [
+            "IMAGINARY(\"6+9i\")",
+            "IMAGINARY(\"2-i\")"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "IMABS",
+          "description": "Returns the absolute value (modulus) of a complex number",
+          "syntax": "IMABS(inumber)",
+          "category": "Engineering",
+          "examples": [
+            "IMABS(\"5+12i\")",
+            "IMABS(\"3-4i\")"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "ERF",
+          "description": "Returns the error function",
+          "syntax": "ERF(lower_limit, [upper_limit])",
+          "category": "Engineering",
+          "examples": [
+            "ERF(1)",
+            "ERF(0, 1)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "ERFC",
+          "description": "Returns the complementary error function",
+          "syntax": "ERFC(x)",
+          "category": "Engineering",
+          "examples": [
+            "ERFC(1)",
+            "ERFC(0.5)"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        },
+        {
+          "name": "CONVERT",
+          "description": "Converts a number from one measurement system to another",
+          "syntax": "CONVERT(number, from_unit, to_unit)",
+          "category": "Engineering",
+          "examples": [
+            "CONVERT(1, \"m\", \"ft\")",
+            "CONVERT(32, \"F\", \"C\")"
+          ],
+          "sourceFile": "engineeringFunctions.ts"
+        }
+      ],
+      "description": "Specialized functions for engineering calculations and number system conversions."
+    },
+    {
+      "name": "financial",
+      "displayName": "Financial",
+      "functions": [
+        {
+          "name": "PV",
+          "description": "Returns the present value of an investment",
+          "syntax": "PV(rate, nper, pmt, [fv], [type])",
+          "category": "Financial",
+          "examples": [
+            "PV(0.08/12, 10*12, -100, 0, 0)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "FV",
+          "description": "Returns the future value of an investment",
+          "syntax": "FV(rate, nper, pmt, [pv], [type])",
+          "category": "Financial",
+          "examples": [
+            "FV(0.06/12, 10*12, -200, -500, 1)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "PMT",
+          "description": "Returns the periodic payment for an annuity",
+          "syntax": "PMT(rate, nper, pv, [fv], [type])",
+          "category": "Financial",
+          "examples": [
+            "PMT(0.08/12, 10*12, 10000)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "RATE",
+          "description": "Returns the interest rate per period of an annuity",
+          "syntax": "RATE(nper, pmt, pv, [fv], [type], [guess])",
+          "category": "Financial",
+          "examples": [
+            "RATE(4*12, -200, 8000)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "NPV",
+          "description": "Returns the net present value of an investment",
+          "syntax": "NPV(rate, value1, [value2], ...)",
+          "category": "Financial",
+          "examples": [
+            "NPV(0.1, -10000, 3000, 4200, 6800)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "IRR",
+          "description": "Returns the internal rate of return for a series of cash flows",
+          "syntax": "IRR(values, [guess])",
+          "category": "Financial",
+          "examples": [
+            "IRR(A1:A5)",
+            "IRR({-10000,2000,4000,8000})"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "NPER",
+          "description": "Returns the number of periods for an investment",
+          "syntax": "NPER(rate, pmt, pv, [fv], [type])",
+          "category": "Financial",
+          "examples": [
+            "NPER(0.12/12, -100, -1000, 10000, 1)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "IPMT",
+          "description": "Returns the interest payment for an investment for a given period",
+          "syntax": "IPMT(rate, per, nper, pv, [fv], [type])",
+          "category": "Financial",
+          "examples": [
+            "IPMT(0.1/12, 1, 3*12, 8000)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "PPMT",
+          "description": "Returns the payment on the principal for an investment for a given period",
+          "syntax": "PPMT(rate, per, nper, pv, [fv], [type])",
+          "category": "Financial",
+          "examples": [
+            "PPMT(0.1/12, 1, 3*12, 8000)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "SLN",
+          "description": "Returns the straight-line depreciation of an asset for one period",
+          "syntax": "SLN(cost, salvage, life)",
+          "category": "Financial",
+          "examples": [
+            "SLN(30000, 7500, 10)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "DB",
+          "description": "Returns the depreciation of an asset for a specified period by using the fixed-declining balance method",
+          "syntax": "DB(cost, salvage, life, period, [month])",
+          "category": "Financial",
+          "examples": [
+            "DB(1000000, 100000, 6, 1, 7)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "DDB",
+          "description": "Returns the depreciation of an asset for a specified period by using the double-declining balance method or some other method that you specify",
+          "syntax": "DDB(cost, salvage, life, period, [factor])",
+          "category": "Financial",
+          "examples": [
+            "DDB(2400, 300, 10, 1, 2)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "SYD",
+          "description": "Returns the sum-of-years' digits depreciation of an asset for a specified period",
+          "syntax": "SYD(cost, salvage, life, per)",
+          "category": "Financial",
+          "examples": [
+            "SYD(30000, 7500, 10, 1)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "EFFECT",
+          "description": "Returns the effective annual interest rate",
+          "syntax": "EFFECT(nominal_rate, npery)",
+          "category": "Financial",
+          "examples": [
+            "EFFECT(0.0525, 4)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "NOMINAL",
+          "description": "Returns the annual nominal interest rate",
+          "syntax": "NOMINAL(effect_rate, npery)",
+          "category": "Financial",
+          "examples": [
+            "NOMINAL(0.053543, 4)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "FVSCHEDULE",
+          "description": "Returns the future value of an initial principal after applying a series of compound interest rates",
+          "syntax": "FVSCHEDULE(principal, schedule)",
+          "category": "Financial",
+          "examples": [
+            "FVSCHEDULE(1, {0.09, 0.11, 0.1})"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "MIRR",
+          "description": "Returns the internal rate of return where positive and negative cash flows are financed at different rates",
+          "syntax": "MIRR(values, finance_rate, reinvest_rate)",
+          "category": "Financial",
+          "examples": [
+            "MIRR({-120000,39000,30000,21000,37000,46000}, 0.1, 0.12)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "PDURATION",
+          "description": "Returns the number of periods required by an investment to reach a specified value",
+          "syntax": "PDURATION(rate, pv, fv)",
+          "category": "Financial",
+          "examples": [
+            "PDURATION(0.025, 2000, 2200)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "RRI",
+          "description": "Returns an equivalent interest rate for the growth of an investment",
+          "syntax": "RRI(nper, pv, fv)",
+          "category": "Financial",
+          "examples": [
+            "RRI(96, -10000, 11000)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "DOLLARDE",
+          "description": "Converts a dollar price, expressed as a fraction, into a dollar price, expressed as a decimal number",
+          "syntax": "DOLLARDE(fractional_dollar, fraction)",
+          "category": "Financial",
+          "examples": [
+            "DOLLARDE(1.02, 16)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "DOLLARFR",
+          "description": "Converts a dollar price, expressed as a decimal number, into a dollar price, expressed as a fraction",
+          "syntax": "DOLLARFR(decimal_dollar, fraction)",
+          "category": "Financial",
+          "examples": [
+            "DOLLARFR(1.125, 16)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "ISPMT",
+          "description": "Calculates the interest paid during a specific period of an investment",
+          "syntax": "ISPMT(rate, per, nper, pv)",
+          "category": "Financial",
+          "examples": [
+            "ISPMT(0.1/12, 1, 3*12, 8000)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "CUMIPMT",
+          "description": "Returns the cumulative interest paid between two periods",
+          "syntax": "CUMIPMT(rate, nper, pv, start_period, end_period, type)",
+          "category": "Financial",
+          "examples": [
+            "CUMIPMT(0.09/12, 30*12, 125000, 13, 24, 0)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "CUMPRINC",
+          "description": "Returns the cumulative principal paid on a loan between two periods",
+          "syntax": "CUMPRINC(rate, nper, pv, start_period, end_period, type)",
+          "category": "Financial",
+          "examples": [
+            "CUMPRINC(0.09/12, 30*12, 125000, 13, 24, 0)"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "XNPV",
+          "description": "Returns the net present value for a schedule of cash flows that is not necessarily periodic",
+          "syntax": "XNPV(rate, values, dates)",
+          "category": "Financial",
+          "examples": [
+            "XNPV(0.09, {-10000, 2750, 4250, 3250, 2750}, {\"1/1/2008\", \"3/1/2008\", \"10/30/2008\", \"2/15/2009\", \"4/1/2009\"})"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        },
+        {
+          "name": "XIRR",
+          "description": "Returns the internal rate of return for a schedule of cash flows that is not necessarily periodic",
+          "syntax": "XIRR(values, dates, [guess])",
+          "category": "Financial",
+          "examples": [
+            "XIRR({-10000, 2750, 4250, 3250, 2750}, {\"1/1/2008\", \"3/1/2008\", \"10/30/2008\", \"2/15/2009\", \"4/1/2009\"})"
+          ],
+          "sourceFile": "financialFunctions.ts"
+        }
+      ],
+      "description": "Functions for financial calculations including loans, investments, and cash flows."
+    },
+    {
+      "name": "information",
+      "displayName": "Information",
+      "functions": [
+        {
+          "name": "ISBLANK",
+          "description": "Returns TRUE if the value is blank",
+          "syntax": "ISBLANK(value)",
+          "category": "Information",
+          "examples": [
+            "ISBLANK(A1)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ISERROR",
+          "description": "Returns TRUE if the value is an error",
+          "syntax": "ISERROR(value)",
+          "category": "Information",
+          "examples": [
+            "ISERROR(A1/0)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ISLOGICAL",
+          "description": "Returns TRUE if the value is a logical value",
+          "syntax": "ISLOGICAL(value)",
+          "category": "Information",
+          "examples": [
+            "ISLOGICAL(TRUE)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ISNA",
+          "description": "Returns TRUE if the value is #N/A",
+          "syntax": "ISNA(value)",
+          "category": "Information",
+          "examples": [
+            "ISNA(#N/A)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ISNONTEXT",
+          "description": "Returns TRUE if the value is not text",
+          "syntax": "ISNONTEXT(value)",
+          "category": "Information",
+          "examples": [
+            "ISNONTEXT(123)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ISNUMBER",
+          "description": "Returns TRUE if the value is a number",
+          "syntax": "ISNUMBER(value)",
+          "category": "Information",
+          "examples": [
+            "ISNUMBER(123)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ISODD",
+          "description": "Returns TRUE if the number is odd",
+          "syntax": "ISODD(number)",
+          "category": "Information",
+          "examples": [
+            "ISODD(3)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ISEVEN",
+          "description": "Returns TRUE if the number is even",
+          "syntax": "ISEVEN(number)",
+          "category": "Information",
+          "examples": [
+            "ISEVEN(4)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ISTEXT",
+          "description": "Returns TRUE if the value is text",
+          "syntax": "ISTEXT(value)",
+          "category": "Information",
+          "examples": [
+            "ISTEXT(\"Hello\")"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "TYPE",
+          "description": "Returns a number indicating the data type of a value",
+          "syntax": "TYPE(value)",
+          "category": "Information",
+          "examples": [
+            "TYPE(\"text\")"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "N",
+          "description": "Returns a value converted to a number",
+          "syntax": "N(value)",
+          "category": "Information",
+          "examples": [
+            "N(\"123\")"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "NA",
+          "description": "Returns the error value #N/A",
+          "syntax": "NA()",
+          "category": "Information",
+          "examples": [
+            "NA()"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ERROR.TYPE",
+          "description": "Returns a number corresponding to an error type",
+          "syntax": "ERROR.TYPE(error_val)",
+          "category": "Information",
+          "examples": [
+            "ERROR.TYPE(#DIV/0!)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "INFO",
+          "description": "Returns information about the current operating environment",
+          "syntax": "INFO(type_text)",
+          "category": "Information",
+          "examples": [
+            "INFO(\"system\")",
+            "INFO(\"release\")"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ISERR",
+          "description": "Returns TRUE if the value is any error value except #N/A",
+          "syntax": "ISERR(value)",
+          "category": "Information",
+          "examples": [
+            "ISERR(A1/0)",
+            "ISERR(#VALUE!)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ISFORMULA",
+          "description": "Returns TRUE if there is a reference to a cell that contains a formula",
+          "syntax": "ISFORMULA(reference)",
+          "category": "Information",
+          "examples": [
+            "ISFORMULA(A1)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ISREF",
+          "description": "Returns TRUE if the value is a reference",
+          "syntax": "ISREF(value)",
+          "category": "Information",
+          "examples": [
+            "ISREF(A1)",
+            "ISREF(A1:B10)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "ISOMITTED",
+          "description": "Checks whether the value in a LAMBDA is missing and returns TRUE or FALSE",
+          "syntax": "ISOMITTED(argument)",
+          "category": "Information",
+          "examples": [
+            "ISOMITTED(value)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "CELL",
+          "description": "Returns information about the formatting, location, or contents of a cell",
+          "syntax": "CELL(info_type, [reference])",
+          "category": "Information",
+          "examples": [
+            "CELL(\"address\", A1)",
+            "CELL(\"row\", A1)",
+            "CELL(\"col\", A1)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "SHEET",
+          "description": "Returns the sheet number of the referenced sheet",
+          "syntax": "SHEET([value])",
+          "category": "Information",
+          "examples": [
+            "SHEET()",
+            "SHEET(A1)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "SHEETS",
+          "description": "Returns the number of sheets in a reference",
+          "syntax": "SHEETS([reference])",
+          "category": "Information",
+          "examples": [
+            "SHEETS()",
+            "SHEETS(A1:B10)"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        },
+        {
+          "name": "STOCKHISTORY",
+          "description": "Retrieves historical data about a financial instrument",
+          "syntax": "STOCKHISTORY(stock, [start_date], [end_date], [interval], [headers], [properties])",
+          "category": "Information",
+          "examples": [
+            "STOCKHISTORY(\"MSFT\")"
+          ],
+          "sourceFile": "informationFunctions.ts"
+        }
+      ],
+      "description": "Functions for testing cell contents and retrieving information about data types."
+    },
+    {
+      "name": "legacy",
+      "displayName": "Legacy",
+      "functions": [
+        {
+          "name": "BETADIST",
+          "description": "[Legacy] Returns the beta cumulative distribution function",
+          "syntax": "BETADIST(x, alpha, beta, [A], [B])",
+          "category": "Statistical",
+          "examples": [
+            "BETADIST(2, 8, 10, 1, 3)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        },
+        {
+          "name": "BINOMDIST",
+          "description": "[Legacy] Returns the individual term binomial distribution probability",
+          "syntax": "BINOMDIST(number_s, trials, probability_s, cumulative)",
+          "category": "Statistical",
+          "examples": [
+            "BINOMDIST(6, 10, 0.5, FALSE)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        },
+        {
+          "name": "EXPONDIST",
+          "description": "[Legacy] Returns the exponential distribution",
+          "syntax": "EXPONDIST(x, lambda, cumulative)",
+          "category": "Statistical",
+          "examples": [
+            "EXPONDIST(0.2, 10, TRUE)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        },
+        {
+          "name": "NORMDIST",
+          "description": "[Legacy] Returns the normal cumulative distribution",
+          "syntax": "NORMDIST(x, mean, standard_dev, cumulative)",
+          "category": "Statistical",
+          "examples": [
+            "NORMDIST(42, 40, 1.5, TRUE)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        },
+        {
+          "name": "NORMSDIST",
+          "description": "[Legacy] Returns the standard normal cumulative distribution",
+          "syntax": "NORMSDIST(z)",
+          "category": "Statistical",
+          "examples": [
+            "NORMSDIST(1.333333)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        },
+        {
+          "name": "POISSON",
+          "description": "[Legacy] Returns the Poisson distribution",
+          "syntax": "POISSON(x, mean, cumulative)",
+          "category": "Statistical",
+          "examples": [
+            "POISSON(2, 5, TRUE)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        },
+        {
+          "name": "WEIBULL",
+          "description": "[Legacy] Returns the Weibull distribution",
+          "syntax": "WEIBULL(x, alpha, beta, cumulative)",
+          "category": "Statistical",
+          "examples": [
+            "WEIBULL(105, 20, 100, TRUE)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        },
+        {
+          "name": "TTEST",
+          "description": "[Legacy] Returns the probability associated with a Student's t-test",
+          "syntax": "TTEST(array1, array2, tails, type)",
+          "category": "Statistical",
+          "examples": [
+            "TTEST(A1:A10, B1:B10, 2, 1)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        },
+        {
+          "name": "ZTEST",
+          "description": "[Legacy] Returns the one-tailed probability-value of a z-test",
+          "syntax": "ZTEST(array, x, [sigma])",
+          "category": "Statistical",
+          "examples": [
+            "ZTEST(A1:A10, 4)",
+            "ZTEST(A1:A10, 4, 1)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        },
+        {
+          "name": "NORMINV",
+          "description": "[Legacy] Returns the inverse of the normal cumulative distribution",
+          "syntax": "NORMINV(probability, mean, standard_dev)",
+          "category": "Statistical",
+          "examples": [
+            "NORMINV(0.908789, 40, 1.5)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        },
+        {
+          "name": "NORMSINV",
+          "description": "[Legacy] Returns the inverse of the standard normal cumulative distribution",
+          "syntax": "NORMSINV(probability)",
+          "category": "Statistical",
+          "examples": [
+            "NORMSINV(0.908789)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        },
+        {
+          "name": "CHIDIST",
+          "description": "[Legacy] Returns the one-tailed probability of the chi-squared distribution",
+          "syntax": "CHIDIST(x, degrees_freedom)",
+          "category": "Statistical",
+          "examples": [
+            "CHIDIST(18.307, 10)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        },
+        {
+          "name": "CRITBINOM",
+          "description": "[Legacy] Returns the smallest value for which the cumulative binomial distribution is less than or equal to a criterion value",
+          "syntax": "CRITBINOM(trials, probability_s, alpha)",
+          "category": "Statistical",
+          "examples": [
+            "CRITBINOM(6, 0.5, 0.75)"
+          ],
+          "sourceFile": "legacyFunctions.ts"
+        }
+      ],
+      "description": "Compatibility functions maintained for backward compatibility."
+    },
+    {
+      "name": "logical",
+      "displayName": "Logical",
+      "functions": [
+        {
+          "name": "IF",
+          "description": "Returns one value if a condition is true and another value if it's false",
+          "syntax": "IF(condition, value_if_true, [value_if_false])",
+          "category": "Logical",
+          "examples": [
+            "IF(A1>10, \"High\", \"Low\")"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "AND",
+          "description": "Returns TRUE if all conditions are TRUE",
+          "syntax": "AND(logical1, [logical2], ...)",
+          "category": "Logical",
+          "examples": [
+            "AND(A1>5, B1<10)",
+            "AND(TRUE, TRUE, FALSE)"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "OR",
+          "description": "Returns TRUE if any condition is TRUE",
+          "syntax": "OR(logical1, [logical2], ...)",
+          "category": "Logical",
+          "examples": [
+            "OR(A1>5, B1<10)",
+            "OR(FALSE, FALSE, TRUE)"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "NOT",
+          "description": "Reverses the logic of its argument",
+          "syntax": "NOT(logical)",
+          "category": "Logical",
+          "examples": [
+            "NOT(TRUE)",
+            "NOT(A1>5)"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "XOR",
+          "description": "Returns TRUE if an odd number of conditions are TRUE",
+          "syntax": "XOR(logical1, [logical2], ...)",
+          "category": "Logical",
+          "examples": [
+            "XOR(TRUE, FALSE)",
+            "XOR(A1>5, B1<10, C1=0)"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "IFERROR",
+          "description": "Returns a value you specify if a formula evaluates to an error",
+          "syntax": "IFERROR(value, value_if_error)",
+          "category": "Logical",
+          "examples": [
+            "IFERROR(A1/B1, \"Division by zero\")"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "IFNA",
+          "description": "Returns a value you specify if the expression resolves to #N/A",
+          "syntax": "IFNA(value, value_if_na)",
+          "category": "Logical",
+          "examples": [
+            "IFNA(VLOOKUP(A1, B:C, 2, FALSE), \"Not found\")"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "LET",
+          "description": "Assigns names to calculation results",
+          "syntax": "LET(name1, value1, [name2, value2, ...], calculation)",
+          "category": "Logical",
+          "examples": [
+            "LET(x, A1*2, y, B1*3, x+y)"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "SWITCH",
+          "description": "Evaluates an expression and returns the corresponding value",
+          "syntax": "SWITCH(expression, value1, result1, [value2, result2], ..., [default])",
+          "category": "Logical",
+          "examples": [
+            "SWITCH(A1, 1, \"One\", 2, \"Two\", 3, \"Three\", \"Other\")"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "TRUE",
+          "description": "Returns the logical value TRUE",
+          "syntax": "TRUE()",
+          "category": "Logical",
+          "examples": [
+            "TRUE()",
+            "IF(TRUE(), 1, 0)"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "FALSE",
+          "description": "Returns the logical value FALSE",
+          "syntax": "FALSE()",
+          "category": "Logical",
+          "examples": [
+            "FALSE()",
+            "IF(FALSE(), 1, 0)"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "IFS",
+          "description": "Checks whether one or more conditions are met and returns a value that corresponds to the first TRUE condition",
+          "syntax": "IFS(condition1, value1, [condition2, value2], ...)",
+          "category": "Logical",
+          "examples": [
+            "IFS(A1>90, \"A\", A1>80, \"B\", A1>70, \"C\", TRUE(), \"F\")"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "MAKEARRAY",
+          "description": "Returns a calculated array of a specified row and column size, by applying a LAMBDA",
+          "syntax": "MAKEARRAY(rows, cols, lambda)",
+          "category": "Logical",
+          "examples": [
+            "MAKEARRAY(3, 3, LAMBDA(r,c,r*c))"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "MAP",
+          "description": "Returns an array formed by mapping each value in the array(s) to a new value by applying a LAMBDA",
+          "syntax": "MAP(array1, [array2, ...], lambda)",
+          "category": "Logical",
+          "examples": [
+            "MAP(A1:A5, LAMBDA(x, x*2))"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "REDUCE",
+          "description": "Reduces an array to an accumulated value by applying a LAMBDA to each value and returning the total value in the accumulator",
+          "syntax": "REDUCE(initial_value, array, lambda)",
+          "category": "Logical",
+          "examples": [
+            "REDUCE(0, A1:A5, LAMBDA(acc, val, acc + val))"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "SCAN",
+          "description": "Scans an array by applying a LAMBDA to each value and returns an array that has each intermediate value",
+          "syntax": "SCAN(initial_value, array, lambda)",
+          "category": "Logical",
+          "examples": [
+            "SCAN(0, A1:A5, LAMBDA(acc, val, acc + val))"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "BYROW",
+          "description": "Applies a LAMBDA to each row and returns an array of the results",
+          "syntax": "BYROW(array, lambda)",
+          "category": "Logical",
+          "examples": [
+            "BYROW(A1:C3, LAMBDA(row, SUM(row)))"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "BYCOL",
+          "description": "Applies a LAMBDA to each column and returns an array of the results",
+          "syntax": "BYCOL(array, lambda)",
+          "category": "Logical",
+          "examples": [
+            "BYCOL(A1:C3, LAMBDA(col, SUM(col)))"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        },
+        {
+          "name": "LAMBDA",
+          "description": "Create custom, reusable functions and call them by a friendly name",
+          "syntax": "LAMBDA(parameter1, [parameter2, ...], calculation)",
+          "category": "Logical",
+          "examples": [
+            "LAMBDA(x, y, x*y)",
+            "LAMBDA(x, x^2 + 2*x + 1)"
+          ],
+          "sourceFile": "logicalFunctions.ts"
+        }
+      ],
+      "description": "Functions for logical operations and conditional testing."
+    },
+    {
+      "name": "lookup-reference",
+      "displayName": "Lookup & Reference",
+      "functions": [
+        {
+          "name": "VLOOKUP",
+          "description": "Looks for a value in the leftmost column of a table",
+          "syntax": "VLOOKUP(lookup_value, table_array, col_index, [range_lookup])",
+          "category": "Lookup",
+          "examples": [
+            "VLOOKUP(A2, D2:F100, 3, FALSE)"
+          ],
+          "sourceFile": "lookupFunctions.ts"
+        },
+        {
+          "name": "HLOOKUP",
+          "description": "Looks for a value in the top row of a table",
+          "syntax": "HLOOKUP(lookup_value, table_array, row_index, [range_lookup])",
+          "category": "Lookup",
+          "examples": [
+            "HLOOKUP(A2, A1:F10, 3, FALSE)"
+          ],
+          "sourceFile": "lookupFunctions.ts"
+        },
+        {
+          "name": "INDEX",
+          "description": "Returns the value of an element in a table or array, selected by row and column number",
+          "syntax": "INDEX(array, row, [column])",
+          "category": "Lookup",
+          "examples": [
+            "INDEX(A1:C10, 3, 2)",
+            "INDEX(A1:A10, 5)"
+          ],
+          "sourceFile": "lookupFunctions.ts"
+        },
+        {
+          "name": "MATCH",
+          "description": "Returns the relative position of an item in an array",
+          "syntax": "MATCH(lookup_value, lookup_array, [match_type])",
+          "category": "Lookup",
+          "examples": [
+            "MATCH(40, B2:B10, 0)",
+            "MATCH(A1, 1:1, 0)"
+          ],
+          "sourceFile": "lookupFunctions.ts"
+        },
+        {
+          "name": "INDIRECT",
+          "description": "Returns the value specified by a text string representing a cell reference",
+          "syntax": "INDIRECT(ref_text)",
+          "category": "Lookup",
+          "examples": [
+            "INDIRECT(\"A1\")",
+            "INDIRECT(\"B\"&ROW())"
+          ],
+          "sourceFile": "lookupFunctions.ts"
+        },
+        {
+          "name": "OFFSET",
+          "description": "Returns a reference offset from a given reference by a specified number of rows and columns",
+          "syntax": "OFFSET(reference, rows, cols, [height], [width])",
+          "category": "Lookup",
+          "examples": [
+            "OFFSET(A1, 2, 3)",
+            "OFFSET(B5, -1, 1)"
+          ],
+          "sourceFile": "lookupFunctions.ts"
+        },
+        {
+          "name": "XLOOKUP",
+          "description": "Searches a range and returns an item corresponding to the first match",
+          "syntax": "XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])",
+          "category": "Lookup",
+          "examples": [
+            "XLOOKUP(\"Apple\", A2:A10, B2:B10, \"Not Found\")"
+          ],
+          "sourceFile": "lookupFunctions.ts"
+        },
+        {
+          "name": "FILTER",
+          "description": "Filters a range of data based on criteria you define",
+          "syntax": "FILTER(array, include, [if_empty])",
+          "category": "Lookup",
+          "examples": [
+            "FILTER(A2:A10, B2:B10>10, \"No matches\")"
+          ],
+          "sourceFile": "lookupFunctions.ts"
+        },
+        {
+          "name": "UNIQUE",
+          "description": "Returns a list of unique values in a list or range",
+          "syntax": "UNIQUE(array)",
+          "category": "Lookup",
+          "examples": [
+            "UNIQUE(A2:A10)"
+          ],
+          "sourceFile": "lookupFunctions.ts"
+        }
+      ],
+      "description": "Functions for searching and referencing data within tables and ranges."
+    },
+    {
+      "name": "math-trigonometry",
+      "displayName": "Math & Trigonometry",
+      "functions": [
+        {
+          "name": "SUM",
+          "description": "Adds all numbers in a range of cells",
+          "syntax": "SUM(number1, [number2], ...)",
+          "category": "Math",
+          "examples": [
+            "SUM(A1:A10)",
+            "SUM(5, 10, 15)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "PRODUCT",
+          "description": "Multiplies all the numbers given as arguments",
+          "syntax": "PRODUCT(number1, [number2], ...)",
+          "category": "Math",
+          "examples": [
+            "PRODUCT(A1:A10)",
+            "PRODUCT(2, 3, 4)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "POWER",
+          "description": "Returns the result of a number raised to a power",
+          "syntax": "POWER(number, power)",
+          "category": "Math",
+          "examples": [
+            "POWER(2, 3)",
+            "POWER(A1, 2)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "SQRT",
+          "description": "Returns the square root of a number",
+          "syntax": "SQRT(number)",
+          "category": "Math",
+          "examples": [
+            "SQRT(16)",
+            "SQRT(A1)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "ABS",
+          "description": "Returns the absolute value of a number",
+          "syntax": "ABS(number)",
+          "category": "Math",
+          "examples": [
+            "ABS(-5)",
+            "ABS(A1)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "ROUND",
+          "description": "Rounds a number to a specified number of digits",
+          "syntax": "ROUND(number, [num_digits])",
+          "category": "Math",
+          "examples": [
+            "ROUND(3.14159, 2)",
+            "ROUND(A1, 0)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "CEILING",
+          "description": "Rounds a number up to the nearest integer or multiple of significance",
+          "syntax": "CEILING(number, [significance])",
+          "category": "Math",
+          "examples": [
+            "CEILING(3.2)",
+            "CEILING(4.3, 0.5)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "FLOOR",
+          "description": "Rounds a number down to the nearest integer or multiple of significance",
+          "syntax": "FLOOR(number, [significance])",
+          "category": "Math",
+          "examples": [
+            "FLOOR(3.8)",
+            "FLOOR(4.7, 0.5)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "SIN",
+          "description": "Returns the sine of an angle",
+          "syntax": "SIN(number)",
+          "category": "Math",
+          "examples": [
+            "SIN(PI()/2)",
+            "SIN(RADIANS(90))"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "COS",
+          "description": "Returns the cosine of an angle",
+          "syntax": "COS(number)",
+          "category": "Math",
+          "examples": [
+            "COS(0)",
+            "COS(RADIANS(90))"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "TAN",
+          "description": "Returns the tangent of an angle",
+          "syntax": "TAN(number)",
+          "category": "Math",
+          "examples": [
+            "TAN(PI()/4)",
+            "TAN(RADIANS(45))"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "PI",
+          "description": "Returns the value of pi",
+          "syntax": "PI()",
+          "category": "Math",
+          "examples": [
+            "PI()",
+            "2*PI()"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "RADIANS",
+          "description": "Converts degrees to radians",
+          "syntax": "RADIANS(angle)",
+          "category": "Math",
+          "examples": [
+            "RADIANS(90)",
+            "RADIANS(180)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "DEGREES",
+          "description": "Converts radians to degrees",
+          "syntax": "DEGREES(angle)",
+          "category": "Math",
+          "examples": [
+            "DEGREES(PI())",
+            "DEGREES(PI()/2)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "MOD",
+          "description": "Returns the remainder from division",
+          "syntax": "MOD(number, divisor)",
+          "category": "Math",
+          "examples": [
+            "MOD(10, 3)",
+            "MOD(A1, B1)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "SUMIFS",
+          "description": "Adds the cells in a range that meet multiple criteria",
+          "syntax": "SUMIFS(sum_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)",
+          "category": "Math",
+          "examples": [
+            "SUMIFS(D2:D10, A2:A10, \"Product\", B2:B10, \">10\")"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "LOG",
+          "description": "Returns the logarithm of a number to a specified base",
+          "syntax": "LOG(number, [base])",
+          "category": "Math",
+          "examples": [
+            "LOG(100)",
+            "LOG(8, 2)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "LN",
+          "description": "Returns the natural logarithm of a number",
+          "syntax": "LN(number)",
+          "category": "Math",
+          "examples": [
+            "LN(EXP(1))",
+            "LN(10)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "EXP",
+          "description": "Returns e raised to the power of a given number",
+          "syntax": "EXP(number)",
+          "category": "Math",
+          "examples": [
+            "EXP(1)",
+            "EXP(2)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "ACOS",
+          "description": "Returns the arccosine of a number",
+          "syntax": "ACOS(number)",
+          "category": "Math",
+          "examples": [
+            "ACOS(0.5)",
+            "ACOS(-1)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "ASIN",
+          "description": "Returns the arcsine of a number",
+          "syntax": "ASIN(number)",
+          "category": "Math",
+          "examples": [
+            "ASIN(0.5)",
+            "ASIN(1)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "ATAN",
+          "description": "Returns the arctangent of a number",
+          "syntax": "ATAN(number)",
+          "category": "Math",
+          "examples": [
+            "ATAN(1)",
+            "ATAN(0)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "ATAN2",
+          "description": "Returns the arctangent from x- and y-coordinates",
+          "syntax": "ATAN2(x_num, y_num)",
+          "category": "Math",
+          "examples": [
+            "ATAN2(1, 1)",
+            "ATAN2(4, 3)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "SINH",
+          "description": "Returns the hyperbolic sine of a number",
+          "syntax": "SINH(number)",
+          "category": "Math",
+          "examples": [
+            "SINH(1)",
+            "SINH(0)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "COSH",
+          "description": "Returns the hyperbolic cosine of a number",
+          "syntax": "COSH(number)",
+          "category": "Math",
+          "examples": [
+            "COSH(0)",
+            "COSH(1)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "TANH",
+          "description": "Returns the hyperbolic tangent of a number",
+          "syntax": "TANH(number)",
+          "category": "Math",
+          "examples": [
+            "TANH(0)",
+            "TANH(1)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "ACOSH",
+          "description": "Returns the inverse hyperbolic cosine of a number",
+          "syntax": "ACOSH(number)",
+          "category": "Math",
+          "examples": [
+            "ACOSH(1)",
+            "ACOSH(2)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "ASINH",
+          "description": "Returns the inverse hyperbolic sine of a number",
+          "syntax": "ASINH(number)",
+          "category": "Math",
+          "examples": [
+            "ASINH(1)",
+            "ASINH(0)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "ATANH",
+          "description": "Returns the inverse hyperbolic tangent of a number",
+          "syntax": "ATANH(number)",
+          "category": "Math",
+          "examples": [
+            "ATANH(0.5)",
+            "ATANH(-0.5)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "ROUNDUP",
+          "description": "Rounds a number up, away from zero",
+          "syntax": "ROUNDUP(number, [num_digits])",
+          "category": "Math",
+          "examples": [
+            "ROUNDUP(3.14159, 2)",
+            "ROUNDUP(-3.14, 1)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "ROUNDDOWN",
+          "description": "Rounds a number down, toward zero",
+          "syntax": "ROUNDDOWN(number, [num_digits])",
+          "category": "Math",
+          "examples": [
+            "ROUNDDOWN(3.14159, 2)",
+            "ROUNDDOWN(-3.14, 1)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "INT",
+          "description": "Rounds a number down to the nearest integer",
+          "syntax": "INT(number)",
+          "category": "Math",
+          "examples": [
+            "INT(3.7)",
+            "INT(-3.7)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "TRUNC",
+          "description": "Truncates a number to an integer",
+          "syntax": "TRUNC(number, [num_digits])",
+          "category": "Math",
+          "examples": [
+            "TRUNC(3.14159, 2)",
+            "TRUNC(-3.14)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "EVEN",
+          "description": "Rounds a number up to the nearest even integer",
+          "syntax": "EVEN(number)",
+          "category": "Math",
+          "examples": [
+            "EVEN(3)",
+            "EVEN(-2.5)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "ODD",
+          "description": "Rounds a number up to the nearest odd integer",
+          "syntax": "ODD(number)",
+          "category": "Math",
+          "examples": [
+            "ODD(2)",
+            "ODD(-2.5)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "SIGN",
+          "description": "Returns the sign of a number",
+          "syntax": "SIGN(number)",
+          "category": "Math",
+          "examples": [
+            "SIGN(10)",
+            "SIGN(-5)",
+            "SIGN(0)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "FACT",
+          "description": "Returns the factorial of a number",
+          "syntax": "FACT(number)",
+          "category": "Math",
+          "examples": [
+            "FACT(5)",
+            "FACT(0)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "SQRTPI",
+          "description": "Returns the square root of (number * pi)",
+          "syntax": "SQRTPI(number)",
+          "category": "Math",
+          "examples": [
+            "SQRTPI(1)",
+            "SQRTPI(4)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "LOG10",
+          "description": "Returns the base-10 logarithm of a number",
+          "syntax": "LOG10(number)",
+          "category": "Math",
+          "examples": [
+            "LOG10(100)",
+            "LOG10(10)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "RAND",
+          "description": "Returns a random number between 0 and 1",
+          "syntax": "RAND()",
+          "category": "Math",
+          "examples": [
+            "RAND()",
+            "RAND()*10"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "RANDBETWEEN",
+          "description": "Returns a random number between the numbers you specify",
+          "syntax": "RANDBETWEEN(bottom, top)",
+          "category": "Math",
+          "examples": [
+            "RANDBETWEEN(1, 10)",
+            "RANDBETWEEN(-5, 5)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "QUOTIENT",
+          "description": "Returns the integer portion of a division",
+          "syntax": "QUOTIENT(numerator, denominator)",
+          "category": "Math",
+          "examples": [
+            "QUOTIENT(10, 3)",
+            "QUOTIENT(-10, 3)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "MROUND",
+          "description": "Returns a number rounded to the desired multiple",
+          "syntax": "MROUND(number, multiple)",
+          "category": "Math",
+          "examples": [
+            "MROUND(10, 3)",
+            "MROUND(1.3, 0.2)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "SUMIF",
+          "description": "Adds the cells specified by a given criteria",
+          "syntax": "SUMIF(range, criteria, [sum_range])",
+          "category": "Math",
+          "examples": [
+            "SUMIF(A1:A10, \">5\")",
+            "SUMIF(A1:A10, \"Apple\", B1:B10)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "SUMPRODUCT",
+          "description": "Returns the sum of the products of corresponding array components",
+          "syntax": "SUMPRODUCT(array1, [array2], [array3], ...)",
+          "category": "Math",
+          "examples": [
+            "SUMPRODUCT(A1:A3, B1:B3)",
+            "SUMPRODUCT({1,2,3}, {4,5,6})"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "SUMSQ",
+          "description": "Returns the sum of the squares of the arguments",
+          "syntax": "SUMSQ(number1, [number2], ...)",
+          "category": "Math",
+          "examples": [
+            "SUMSQ(A1:A10)",
+            "SUMSQ(3, 4, 5)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "GCD",
+          "description": "Returns the greatest common divisor",
+          "syntax": "GCD(number1, [number2], ...)",
+          "category": "Math",
+          "examples": [
+            "GCD(24, 36)",
+            "GCD(12, 18, 24)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "LCM",
+          "description": "Returns the least common multiple",
+          "syntax": "LCM(number1, [number2], ...)",
+          "category": "Math",
+          "examples": [
+            "LCM(6, 8)",
+            "LCM(12, 18, 24)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        },
+        {
+          "name": "COMBIN",
+          "description": "Returns the number of combinations for a given number of objects",
+          "syntax": "COMBIN(number, number_chosen)",
+          "category": "Math",
+          "examples": [
+            "COMBIN(8, 3)",
+            "COMBIN(10, 2)"
+          ],
+          "sourceFile": "mathFunctions.ts"
+        }
+      ],
+      "description": "Mathematical and trigonometric functions for calculations and analysis."
+    },
+    {
+      "name": "statistical",
+      "displayName": "Statistical",
+      "functions": [
+        {
+          "name": "AVERAGE",
+          "description": "Calculates the average of numbers",
+          "syntax": "AVERAGE(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "AVERAGE(B2:B20)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "MAX",
+          "description": "Returns the largest value in a set of values",
+          "syntax": "MAX(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "MAX(C3:C15)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "MIN",
+          "description": "Returns the smallest value in a set of values",
+          "syntax": "MIN(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "MIN(D4:D20)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "COUNT",
+          "description": "Counts the number of cells that contain numbers",
+          "syntax": "COUNT(value1, [value2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "COUNT(E5:E25)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "COUNTA",
+          "description": "Counts the number of cells that are not empty",
+          "syntax": "COUNTA(value1, [value2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "COUNTA(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "COUNTBLANK",
+          "description": "Counts empty cells in a range",
+          "syntax": "COUNTBLANK(range)",
+          "category": "Statistical",
+          "examples": [
+            "COUNTBLANK(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "COUNTIFS",
+          "description": "Counts the number of cells within a range that meet multiple criteria",
+          "syntax": "COUNTIFS(criteria_range1, criteria1, [criteria_range2, criteria2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "COUNTIFS(A2:A10, \"Product\", B2:B10, \">10\")"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "MEDIAN",
+          "description": "Returns the median of the given numbers",
+          "syntax": "MEDIAN(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "MEDIAN(A1:A10)",
+            "MEDIAN(1, 2, 3, 4, 5)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "MODE",
+          "description": "Returns the most common value in a data set",
+          "syntax": "MODE(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "MODE(A1:A10)",
+            "MODE(1, 2, 2, 3, 4)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "STDEV",
+          "description": "Estimates standard deviation based on a sample",
+          "syntax": "STDEV(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "STDEV(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "VAR",
+          "description": "Estimates variance based on a sample",
+          "syntax": "VAR(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "VAR(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "RANK",
+          "description": "Returns the rank of a number in a list of numbers",
+          "syntax": "RANK(number, ref, [order])",
+          "category": "Statistical",
+          "examples": [
+            "RANK(A2, A$1:A$10)",
+            "RANK(5, {1,2,3,4,5}, 1)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "AVEDEV",
+          "description": "Returns the average of the absolute deviations of data points from their mean",
+          "syntax": "AVEDEV(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "AVEDEV(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "AVERAGEA",
+          "description": "Returns the average of its arguments, including numbers, text, and logical values",
+          "syntax": "AVERAGEA(value1, [value2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "AVERAGEA(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "AVERAGEIF",
+          "description": "Returns the average (arithmetic mean) of all the cells in a range that meet a given criteria",
+          "syntax": "AVERAGEIF(range, criteria, [average_range])",
+          "category": "Statistical",
+          "examples": [
+            "AVERAGEIF(A2:A10, \">5\")"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "AVERAGEIFS",
+          "description": "Returns the average (arithmetic mean) of all cells that meet multiple criteria",
+          "syntax": "AVERAGEIFS(average_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "AVERAGEIFS(B2:B10, A2:A10, \"Product\", C2:C10, \">10\")"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "COUNTIF",
+          "description": "Counts the number of cells within a range that meet the given criteria",
+          "syntax": "COUNTIF(range, criteria)",
+          "category": "Statistical",
+          "examples": [
+            "COUNTIF(A2:A10, \">5\")"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "MAXA",
+          "description": "Returns the maximum value in a list of arguments, including numbers, text, and logical values",
+          "syntax": "MAXA(value1, [value2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "MAXA(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "MAXIFS",
+          "description": "Returns the maximum value among cells specified by a given set of conditions or criteria",
+          "syntax": "MAXIFS(max_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "MAXIFS(B2:B10, A2:A10, \"Product\", C2:C10, \">10\")"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "MINA",
+          "description": "Returns the smallest value in a list of arguments, including numbers, text, and logical values",
+          "syntax": "MINA(value1, [value2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "MINA(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "MINIFS",
+          "description": "Returns the minimum value among cells specified by a given set of conditions or criteria",
+          "syntax": "MINIFS(min_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "MINIFS(B2:B10, A2:A10, \"Product\", C2:C10, \">10\")"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "GEOMEAN",
+          "description": "Returns the geometric mean",
+          "syntax": "GEOMEAN(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "GEOMEAN(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "HARMEAN",
+          "description": "Returns the harmonic mean",
+          "syntax": "HARMEAN(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "HARMEAN(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "LARGE",
+          "description": "Returns the k-th largest value in a data set",
+          "syntax": "LARGE(array, k)",
+          "category": "Statistical",
+          "examples": [
+            "LARGE(A1:A10, 2)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "SMALL",
+          "description": "Returns the k-th smallest value in a data set",
+          "syntax": "SMALL(array, k)",
+          "category": "Statistical",
+          "examples": [
+            "SMALL(A1:A10, 2)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "PERCENTILE.INC",
+          "description": "Returns the k-th percentile of values in a range",
+          "syntax": "PERCENTILE.INC(array, k)",
+          "category": "Statistical",
+          "examples": [
+            "PERCENTILE.INC(A1:A10, 0.75)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "QUARTILE.INC",
+          "description": "Returns the quartile of a data set",
+          "syntax": "QUARTILE.INC(array, quart)",
+          "category": "Statistical",
+          "examples": [
+            "QUARTILE.INC(A1:A10, 1)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "RANK.EQ",
+          "description": "Returns the rank of a number in a list of numbers",
+          "syntax": "RANK.EQ(number, ref, [order])",
+          "category": "Statistical",
+          "examples": [
+            "RANK.EQ(A2, A$1:A$10)",
+            "RANK.EQ(5, {1,2,3,4,5}, 1)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "RANK.AVG",
+          "description": "Returns the rank of a number in a list of numbers (average for ties)",
+          "syntax": "RANK.AVG(number, ref, [order])",
+          "category": "Statistical",
+          "examples": [
+            "RANK.AVG(A2, A$1:A$10)",
+            "RANK.AVG(5, {1,2,3,4,5}, 1)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "SKEW",
+          "description": "Returns the skewness of a distribution",
+          "syntax": "SKEW(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "SKEW(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "KURT",
+          "description": "Returns the kurtosis of a data set",
+          "syntax": "KURT(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "KURT(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "TRIMMEAN",
+          "description": "Returns the mean of the interior of a data set",
+          "syntax": "TRIMMEAN(array, percent)",
+          "category": "Statistical",
+          "examples": [
+            "TRIMMEAN(A1:A10, 0.2)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "STDEV.S",
+          "description": "Estimates standard deviation based on a sample",
+          "syntax": "STDEV.S(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "STDEV.S(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "STDEV.P",
+          "description": "Calculates standard deviation based on the entire population",
+          "syntax": "STDEV.P(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "STDEV.P(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "VAR.S",
+          "description": "Estimates variance based on a sample",
+          "syntax": "VAR.S(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "VAR.S(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "VAR.P",
+          "description": "Calculates variance based on the entire population",
+          "syntax": "VAR.P(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "VAR.P(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "DEVSQ",
+          "description": "Returns the sum of squares of deviations",
+          "syntax": "DEVSQ(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "DEVSQ(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "CORREL",
+          "description": "Returns the correlation coefficient between two data sets",
+          "syntax": "CORREL(array1, array2)",
+          "category": "Statistical",
+          "examples": [
+            "CORREL(A1:A10, B1:B10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "PEARSON",
+          "description": "Returns the Pearson product moment correlation coefficient",
+          "syntax": "PEARSON(array1, array2)",
+          "category": "Statistical",
+          "examples": [
+            "PEARSON(A1:A10, B1:B10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "RSQ",
+          "description": "Returns the square of the Pearson product moment correlation coefficient",
+          "syntax": "RSQ(known_y_s, known_x_s)",
+          "category": "Statistical",
+          "examples": [
+            "RSQ(A1:A10, B1:B10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "STANDARDIZE",
+          "description": "Returns a normalized value",
+          "syntax": "STANDARDIZE(x, mean, standard_dev)",
+          "category": "Statistical",
+          "examples": [
+            "STANDARDIZE(42, 40, 1.5)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "STDEVP",
+          "description": "[Legacy] Calculates standard deviation based on the entire population",
+          "syntax": "STDEVP(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "STDEVP(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "VARP",
+          "description": "[Legacy] Calculates variance based on the entire population",
+          "syntax": "VARP(number1, [number2], ...)",
+          "category": "Statistical",
+          "examples": [
+            "VARP(A1:A10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "PERCENTILE",
+          "description": "[Legacy] Returns the k-th percentile of values in a range",
+          "syntax": "PERCENTILE(array, k)",
+          "category": "Statistical",
+          "examples": [
+            "PERCENTILE(A1:A10, 0.75)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "QUARTILE",
+          "description": "[Legacy] Returns the quartile of a data set",
+          "syntax": "QUARTILE(array, quart)",
+          "category": "Statistical",
+          "examples": [
+            "QUARTILE(A1:A10, 1)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "PERCENTRANK",
+          "description": "[Legacy] Returns the percentage rank of a value in a data set",
+          "syntax": "PERCENTRANK(array, x, [significance])",
+          "category": "Statistical",
+          "examples": [
+            "PERCENTRANK(A1:A10, 2)",
+            "PERCENTRANK(A1:A10, 2, 4)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "FORECAST",
+          "description": "[Legacy] Calculates, or predicts, a future value by using existing values",
+          "syntax": "FORECAST(x, known_y_s, known_x_s)",
+          "category": "Statistical",
+          "examples": [
+            "FORECAST(30, A1:A10, B1:B10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "COVAR",
+          "description": "[Legacy] Returns covariance, the average of the products of paired deviations",
+          "syntax": "COVAR(array1, array2)",
+          "category": "Statistical",
+          "examples": [
+            "COVAR(A1:A10, B1:B10)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        },
+        {
+          "name": "CONFIDENCE",
+          "description": "[Legacy] Returns the confidence interval for a population mean",
+          "syntax": "CONFIDENCE(alpha, standard_dev, size)",
+          "category": "Statistical",
+          "examples": [
+            "CONFIDENCE(0.05, 2.5, 50)"
+          ],
+          "sourceFile": "statisticalFunctions.ts"
+        }
+      ],
+      "description": "Functions for statistical analysis and probability calculations."
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "functions": [
+        {
+          "name": "CONCAT",
+          "description": "Combines text from multiple cells",
+          "syntax": "CONCAT(text1, [text2], ...)",
+          "category": "Text",
+          "examples": [
+            "CONCAT(A1, \" \", B1)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "CONCATENATE",
+          "description": "Joins several text items into one text item",
+          "syntax": "CONCATENATE(text1, [text2], ...)",
+          "category": "Text",
+          "examples": [
+            "CONCATENATE(\"Hello\", \" \", \"World\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "LEFT",
+          "description": "Returns the leftmost characters from a text value",
+          "syntax": "LEFT(text, [num_chars])",
+          "category": "Text",
+          "examples": [
+            "LEFT(\"Hello\", 3)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "RIGHT",
+          "description": "Returns the rightmost characters from a text value",
+          "syntax": "RIGHT(text, [num_chars])",
+          "category": "Text",
+          "examples": [
+            "RIGHT(\"Hello\", 3)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "MID",
+          "description": "Returns a specific number of characters from a text string",
+          "syntax": "MID(text, start_num, num_chars)",
+          "category": "Text",
+          "examples": [
+            "MID(\"Hello World\", 7, 5)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "LEN",
+          "description": "Returns the number of characters in a text string",
+          "syntax": "LEN(text)",
+          "category": "Text",
+          "examples": [
+            "LEN(\"Hello\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "UPPER",
+          "description": "Converts text to uppercase",
+          "syntax": "UPPER(text)",
+          "category": "Text",
+          "examples": [
+            "UPPER(\"hello\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "LOWER",
+          "description": "Converts text to lowercase",
+          "syntax": "LOWER(text)",
+          "category": "Text",
+          "examples": [
+            "LOWER(\"HELLO\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "PROPER",
+          "description": "Capitalizes the first letter in each word of a text value",
+          "syntax": "PROPER(text)",
+          "category": "Text",
+          "examples": [
+            "PROPER(\"hello world\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "TRIM",
+          "description": "Removes spaces from text",
+          "syntax": "TRIM(text)",
+          "category": "Text",
+          "examples": [
+            "TRIM(\"  Hello World  \")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "SUBSTITUTE",
+          "description": "Substitutes new text for old text in a text string",
+          "syntax": "SUBSTITUTE(text, old_text, new_text, [instance_num])",
+          "category": "Text",
+          "examples": [
+            "SUBSTITUTE(\"Hello World\", \"World\", \"Excel\")",
+            "SUBSTITUTE(A1, \"old\", \"new\", 1)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "FIND",
+          "description": "Finds one text value within another (case-sensitive)",
+          "syntax": "FIND(find_text, within_text, [start_num])",
+          "category": "Text",
+          "examples": [
+            "FIND(\"World\", \"Hello World\")",
+            "FIND(\"o\", A1, 2)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "SEARCH",
+          "description": "Finds one text value within another (case-insensitive)",
+          "syntax": "SEARCH(find_text, within_text, [start_num])",
+          "category": "Text",
+          "examples": [
+            "SEARCH(\"world\", \"Hello World\")",
+            "SEARCH(\"O\", A1, 2)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "REPLACE",
+          "description": "Replaces characters within text",
+          "syntax": "REPLACE(old_text, start_num, num_chars, new_text)",
+          "category": "Text",
+          "examples": [
+            "REPLACE(\"Hello World\", 7, 5, \"Excel\")",
+            "REPLACE(A1, 1, 3, \"ABC\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "REPT",
+          "description": "Repeats text a given number of times",
+          "syntax": "REPT(text, number_times)",
+          "category": "Text",
+          "examples": [
+            "REPT(\"*\", 5)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "TEXTBEFORE",
+          "description": "Returns text that occurs before a given character or string",
+          "syntax": "TEXTBEFORE(text, delimiter, [instance_num], [match_mode])",
+          "category": "Text",
+          "examples": [
+            "TEXTBEFORE(\"Hello World\", \" \")",
+            "TEXTBEFORE(\"A-B-C\", \"-\", 2)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "TEXTAFTER",
+          "description": "Returns text that occurs after a given character or string",
+          "syntax": "TEXTAFTER(text, delimiter, [instance_num], [match_mode])",
+          "category": "Text",
+          "examples": [
+            "TEXTAFTER(\"Hello World\", \" \")",
+            "TEXTAFTER(\"A-B-C\", \"-\", 1)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "VALUE",
+          "description": "Converts a text string that represents a number to a number",
+          "syntax": "VALUE(text)",
+          "category": "Text",
+          "examples": [
+            "VALUE(\"123\")",
+            "VALUE(\"3.14\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "TEXT",
+          "description": "Formats a number and converts it to text",
+          "syntax": "TEXT(value, format_text)",
+          "category": "Text",
+          "examples": [
+            "TEXT(1234.567, \"0.00\")",
+            "TEXT(0.75, \"0%\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "CHAR",
+          "description": "Returns the character specified by the code number",
+          "syntax": "CHAR(number)",
+          "category": "Text",
+          "examples": [
+            "CHAR(65)",
+            "CHAR(97)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "CODE",
+          "description": "Returns a numeric code for the first character in a text string",
+          "syntax": "CODE(text)",
+          "category": "Text",
+          "examples": [
+            "CODE(\"A\")",
+            "CODE(\"a\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "CLEAN",
+          "description": "Removes all nonprintable characters from text",
+          "syntax": "CLEAN(text)",
+          "category": "Text",
+          "examples": [
+            "CLEAN(\"Hello\\x07World\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "EXACT",
+          "description": "Checks to see if two text values are identical",
+          "syntax": "EXACT(text1, text2)",
+          "category": "Text",
+          "examples": [
+            "EXACT(\"Word\", \"word\")",
+            "EXACT(\"Word\", \"Word\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "FIXED",
+          "description": "Formats a number as text with a fixed number of decimals",
+          "syntax": "FIXED(number, [decimals], [no_commas])",
+          "category": "Text",
+          "examples": [
+            "FIXED(1234.567, 1)",
+            "FIXED(1234.567, 1, TRUE)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "DOLLAR",
+          "description": "Converts a number to text, using the $ (dollar) currency format",
+          "syntax": "DOLLAR(number, [decimals])",
+          "category": "Text",
+          "examples": [
+            "DOLLAR(1234.567)",
+            "DOLLAR(-1234.567, 1)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "T",
+          "description": "Converts its arguments to text",
+          "syntax": "T(value)",
+          "category": "Text",
+          "examples": [
+            "T(\"Hello\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "TEXTJOIN",
+          "description": "Combines the text from multiple ranges and/or strings",
+          "syntax": "TEXTJOIN(delimiter, ignore_empty, text1, [text2], ...)",
+          "category": "Text",
+          "examples": [
+            "TEXTJOIN(\", \", TRUE, \"Apple\", \"Orange\", \"\", \"Banana\")",
+            "TEXTJOIN(\"-\", FALSE, A1:A3)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "TEXTSPLIT",
+          "description": "Splits text strings by using column and row delimiters",
+          "syntax": "TEXTSPLIT(text, col_delimiter, [row_delimiter], [ignore_empty])",
+          "category": "Text",
+          "examples": [
+            "TEXTSPLIT(\"A,B,C\", \",\")",
+            "TEXTSPLIT(\"A,B;C,D\", \",\", \";\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "UNICHAR",
+          "description": "Returns the Unicode character that is referenced by the given numeric value",
+          "syntax": "UNICHAR(number)",
+          "category": "Text",
+          "examples": [
+            "UNICHAR(65)",
+            "UNICHAR(8364)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "UNICODE",
+          "description": "Returns the number (code point) that corresponds to the first character of the text",
+          "syntax": "UNICODE(text)",
+          "category": "Text",
+          "examples": [
+            "UNICODE(\"A\")",
+            "UNICODE(\"€\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "NUMBERVALUE",
+          "description": "Converts text to number in a locale-independent manner",
+          "syntax": "NUMBERVALUE(text, [decimal_separator], [group_separator])",
+          "category": "Text",
+          "examples": [
+            "NUMBERVALUE(\"1,234.56\")",
+            "NUMBERVALUE(\"1.234,56\", \",\", \".\")",
+            "NUMBERVALUE(\"50%\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "LEFTB",
+          "description": "Returns the leftmost characters from a text value (byte-based)",
+          "syntax": "LEFTB(text, [num_bytes])",
+          "category": "Text",
+          "examples": [
+            "LEFTB(\"Hello\", 3)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "RIGHTB",
+          "description": "Returns the rightmost characters from a text value (byte-based)",
+          "syntax": "RIGHTB(text, [num_bytes])",
+          "category": "Text",
+          "examples": [
+            "RIGHTB(\"Hello\", 3)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "MIDB",
+          "description": "Returns a specific number of characters from a text string starting at the position you specify (byte-based)",
+          "syntax": "MIDB(text, start_num, num_bytes)",
+          "category": "Text",
+          "examples": [
+            "MIDB(\"Hello World\", 7, 5)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "LENB",
+          "description": "Returns the number of bytes in a text string",
+          "syntax": "LENB(text)",
+          "category": "Text",
+          "examples": [
+            "LENB(\"Hello\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "FINDB",
+          "description": "Finds one text value within another (case-sensitive, byte-based)",
+          "syntax": "FINDB(find_text, within_text, [start_num])",
+          "category": "Text",
+          "examples": [
+            "FINDB(\"World\", \"Hello World\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "SEARCHB",
+          "description": "Finds one text value within another (case-insensitive, byte-based)",
+          "syntax": "SEARCHB(find_text, within_text, [start_num])",
+          "category": "Text",
+          "examples": [
+            "SEARCHB(\"world\", \"Hello World\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "REPLACEB",
+          "description": "Replaces characters within text (byte-based)",
+          "syntax": "REPLACEB(old_text, start_num, num_bytes, new_text)",
+          "category": "Text",
+          "examples": [
+            "REPLACEB(\"Hello World\", 7, 5, \"Excel\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "ASC",
+          "description": "Changes full-width (double-byte) English letters or katakana within a character string to half-width (single-byte) characters",
+          "syntax": "ASC(text)",
+          "category": "Text",
+          "examples": [
+            "ASC(\"Ａ\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "DBCS",
+          "description": "Changes half-width (single-byte) English letters or katakana within a character string to full-width (double-byte) characters",
+          "syntax": "DBCS(text)",
+          "category": "Text",
+          "examples": [
+            "DBCS(\"A\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "PHONETIC",
+          "description": "Extracts the phonetic (furigana) characters from a text string",
+          "syntax": "PHONETIC(text)",
+          "category": "Text",
+          "examples": [
+            "PHONETIC(\"東京\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "BAHTTEXT",
+          "description": "Converts a number to text, using the ß (baht) currency format",
+          "syntax": "BAHTTEXT(number)",
+          "category": "Text",
+          "examples": [
+            "BAHTTEXT(1234.56)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "REGEXTEST",
+          "description": "Determines whether any part of text matches the pattern",
+          "syntax": "REGEXTEST(text, pattern)",
+          "category": "Text",
+          "examples": [
+            "REGEXTEST(\"Hello123\", \"\\\\d+\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "REGEXEXTRACT",
+          "description": "Extracts strings within the provided text that matches the pattern",
+          "syntax": "REGEXEXTRACT(text, pattern)",
+          "category": "Text",
+          "examples": [
+            "REGEXEXTRACT(\"Hello123World\", \"\\\\d+\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "REGEXREPLACE",
+          "description": "Replaces strings within the provided text that matches the pattern with replacement",
+          "syntax": "REGEXREPLACE(text, pattern, replacement)",
+          "category": "Text",
+          "examples": [
+            "REGEXREPLACE(\"Hello123World\", \"\\\\d+\", \"XXX\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "DETECTLANGUAGE",
+          "description": "Identifies the language of a specified text",
+          "syntax": "DETECTLANGUAGE(text)",
+          "category": "Text",
+          "examples": [
+            "DETECTLANGUAGE(\"Hello World\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "TRANSLATE",
+          "description": "Translates a text from one language to another",
+          "syntax": "TRANSLATE(text, from_language, to_language)",
+          "category": "Text",
+          "examples": [
+            "TRANSLATE(\"Hello\", \"en\", \"es\")"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "ARRAYTOTEXT",
+          "description": "Returns an array of text values from any specified range",
+          "syntax": "ARRAYTOTEXT(array, [format])",
+          "category": "Text",
+          "examples": [
+            "ARRAYTOTEXT({1,2,3})"
+          ],
+          "sourceFile": "textFunctions.ts"
+        },
+        {
+          "name": "VALUETOTEXT",
+          "description": "Returns text from any specified value",
+          "syntax": "VALUETOTEXT(value, [format])",
+          "category": "Text",
+          "examples": [
+            "VALUETOTEXT(123)",
+            "VALUETOTEXT(TRUE, 1)"
+          ],
+          "sourceFile": "textFunctions.ts"
+        }
+      ],
+      "description": "Functions for text manipulation, formatting, and string operations."
+    },
+    {
+      "name": "web",
+      "displayName": "Web",
+      "functions": [
+        {
+          "name": "ENCODEURL",
+          "description": "Returns a URL-encoded string",
+          "syntax": "ENCODEURL(text)",
+          "category": "Web",
+          "examples": [
+            "ENCODEURL(\"Hello World\")",
+            "ENCODEURL(\"user@example.com\")",
+            "ENCODEURL(\"a b c\")"
+          ],
+          "sourceFile": "webFunctions.ts"
+        },
+        {
+          "name": "FILTERXML",
+          "description": "Returns specific data from the XML content by using the specified XPath",
+          "syntax": "FILTERXML(xml_text, xpath)",
+          "category": "Web",
+          "examples": [
+            "FILTERXML(\"<root><item>value</item></root>\", \"//item\")",
+            "FILTERXML(A1, \"//price\")",
+            "FILTERXML(\"<data><name>John</name></data>\", \"//name\")"
+          ],
+          "sourceFile": "webFunctions.ts"
+        },
+        {
+          "name": "WEBSERVICE",
+          "description": "Returns data from a web service",
+          "syntax": "WEBSERVICE(url)",
+          "category": "Web",
+          "examples": [
+            "WEBSERVICE(\"https://api.example.com/data\")",
+            "WEBSERVICE(\"https://httpbin.org/json\")"
+          ],
+          "sourceFile": "webFunctions.ts"
+        }
+      ],
+      "description": "Functions for web-based operations and data retrieval."
+    }
+  ],
+  "totalFunctions": 298,
+  "lastUpdated": "2025-08-07T20:41:38.538Z"
+}

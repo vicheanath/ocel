@@ -1,0 +1,66 @@
+{
+  "categories": [
+    {
+      "filename": "database.md",
+      "name": "database",
+      "lastModified": "2025-08-07T20:41:38.548Z"
+    },
+    {
+      "filename": "date-time.md",
+      "name": "date-time",
+      "lastModified": "2025-08-07T20:41:38.549Z"
+    },
+    {
+      "filename": "engineering.md",
+      "name": "engineering",
+      "lastModified": "2025-08-07T20:41:38.549Z"
+    },
+    {
+      "filename": "financial.md",
+      "name": "financial",
+      "lastModified": "2025-08-07T20:41:38.549Z"
+    },
+    {
+      "filename": "information.md",
+      "name": "information",
+      "lastModified": "2025-08-07T20:41:38.549Z"
+    },
+    {
+      "filename": "legacy.md",
+      "name": "legacy",
+      "lastModified": "2025-08-07T20:41:38.549Z"
+    },
+    {
+      "filename": "logical.md",
+      "name": "logical",
+      "lastModified": "2025-08-07T20:41:38.549Z"
+    },
+    {
+      "filename": "lookup-reference.md",
+      "name": "lookup-reference",
+      "lastModified": "2025-08-07T20:41:38.550Z"
+    },
+    {
+      "filename": "math-trigonometry.md",
+      "name": "math-trigonometry",
+      "lastModified": "2025-08-07T20:41:38.550Z"
+    },
+    {
+      "filename": "statistical.md",
+      "name": "statistical",
+      "lastModified": "2025-08-07T20:41:38.550Z"
+    },
+    {
+      "filename": "text.md",
+      "name": "text",
+      "lastModified": "2025-08-07T20:41:38.550Z"
+    },
+    {
+      "filename": "web.md",
+      "name": "web",
+      "lastModified": "2025-08-07T20:41:38.551Z"
+    }
+  ],
+  "totalFiles": 12,
+  "lastGenerated": "2025-08-07T20:53:31.574Z"
+}
