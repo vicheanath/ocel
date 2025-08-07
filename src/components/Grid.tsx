@@ -11,6 +11,7 @@ import { getCellId, parseCellId } from "../utils/spreadsheetUtils";
 import FormulaSuggestions from "./FormulaSuggestions";
 import { useFormulaSuggestions } from "../hooks/useFormulaSuggestions";
 import { FormulaEngine } from "../formulaEngine/FormulaEngine";
+import "./Grid.css";
 
 interface GridProps {
   data: SpreadsheetData;
@@ -635,55 +636,53 @@ const Grid: React.FC<GridProps> = React.memo(
           ? mergedRange.end.row - mergedRange.start.row + 1
           : 1;
 
+        // Determine cell styling based on state priority
+        const getCellClassName = () => {
+          if (isEditing) {
+            return "cell-editing";
+          } else if (isActiveCell) {
+            return "cell-active";
+          } else if (isSelected) {
+            return "cell-selected";
+          } else {
+            return "cell-normal";
+          }
+        };
+
         return (
           <td
             key={`${rowIndex}-${colIndex}`}
-            className={`
-          border border-gray-300 p-0 relative
-          ${
-            isSelected && !isActiveCell
-              ? "bg-blue-100 ring-1 ring-blue-300 z-10"
-              : ""
-          }
-        `}
+            className={getCellClassName()}
             colSpan={colSpan}
             rowSpan={rowSpan}
             onMouseDown={() => handleMouseDown(rowIndex, colIndex)}
             onMouseEnter={() => handleMouseEnter(rowIndex, colIndex)}
             onDoubleClick={() => handleDoubleClick(rowIndex, colIndex)}
             style={{
-              ...cell?.style,
-              backgroundColor: isActiveCell
-                ? "#ffffff"
-                : isSelected
-                ? "#e0e7ff"
-                : cell?.style?.backgroundColor,
-              color: cell?.style?.textColor,
-              textAlign: cell?.style?.horizontalAlign,
-              verticalAlign: cell?.style?.verticalAlign,
+              color: cell?.style?.textColor || "#000000",
               fontWeight: cell?.style?.bold ? "bold" : "normal",
               fontStyle: cell?.style?.italic ? "italic" : "normal",
               textDecoration: cell?.style?.underline ? "underline" : "none",
               fontSize: cell?.style?.fontSize
                 ? `${cell.style.fontSize}px`
-                : "inherit",
-              border: isActiveCell
-                ? "2px solid #1d4ed8"
-                : cell?.style?.border || "1px solid #d1d5db",
-              position: "relative",
-              width: `${columnWidths[colIndex]}px`,
-              height: `${rowHeights[rowIndex]}px`,
+                : "14px",
+              width: `${columnWidths[colIndex] || 96}px`,
+              height: `${rowHeights[rowIndex] || 40}px`,
+              minWidth: "50px",
+              minHeight: "20px",
+              ...(!isEditing &&
+                !isActiveCell &&
+                !isSelected && {
+                  backgroundColor: cell?.style?.backgroundColor || "#ffffff",
+                }),
             }}
           >
             {/* Excel-style active cell corner handle */}
             {isActiveCell && !isEditing && (
               <div
-                className={`absolute -bottom-1 -right-1 w-2 h-2 bg-blue-600 border border-white z-40 ${
-                  isDraggingCorner ? "cursor-grabbing" : "cursor-se-resize"
+                className={`cell-corner-handle ${
+                  isDraggingCorner ? "dragging" : ""
                 }`}
-                style={{
-                  borderRadius: "1px",
-                }}
                 onMouseDown={(e) =>
                   handleCornerMouseDown(e, rowIndex, colIndex)
                 }
@@ -691,7 +690,9 @@ const Grid: React.FC<GridProps> = React.memo(
             )}
 
             {isEditing ? (
-              <div className="relative w-full h-full">
+              <div
+                style={{ position: "relative", width: "100%", height: "100%" }}
+              >
                 <input
                   ref={editInputRef}
                   type="text"
@@ -704,13 +705,16 @@ const Grid: React.FC<GridProps> = React.memo(
                       commitEdit();
                     }
                   }}
-                  className="absolute inset-0 w-full h-full px-2 py-1 border-none outline-none bg-white z-30"
+                  className="cell-edit-input"
                   style={{
                     fontSize: cell?.style?.fontSize
                       ? `${cell.style.fontSize}px`
-                      : "inherit",
-                    fontFamily: cell?.style?.fontFamily,
-                    textAlign: cell?.style?.horizontalAlign,
+                      : "14px",
+                    fontFamily: cell?.style?.fontFamily || "inherit",
+                    textAlign: cell?.style?.horizontalAlign || "left",
+                    fontWeight: cell?.style?.bold ? "bold" : "normal",
+                    fontStyle: cell?.style?.italic ? "italic" : "normal",
+                    color: cell?.style?.textColor || "#000000",
                   }}
                 />
                 {formulaEngine && showSuggestions && (
@@ -718,16 +722,20 @@ const Grid: React.FC<GridProps> = React.memo(
                     suggestions={suggestions}
                     selectedIndex={selectedIndex}
                     onSelect={handleSuggestionSelect}
-                    className="absolute left-0 top-full mt-1 min-w-64"
-                    style={{
-                      zIndex: 60,
-                      minWidth: "250px",
-                    }}
+                    className="formula-suggestions"
                   />
                 )}
               </div>
             ) : (
-              <div className="px-2 py-1 h-full w-full overflow-hidden whitespace-nowrap overflow-ellipsis">
+              <div
+                className={`cell-content ${
+                  cell?.style?.horizontalAlign || "left"
+                }`}
+                style={{
+                  textAlign: cell?.style?.horizontalAlign || "left",
+                  verticalAlign: cell?.style?.verticalAlign || "top",
+                }}
+              >
                 {cell?.displayValue || ""}
               </div>
             )}
@@ -765,7 +773,7 @@ const Grid: React.FC<GridProps> = React.memo(
     return (
       <div
         ref={gridRef}
-        className="flex-1 overflow-auto focus:outline-none"
+        className="spreadsheet-container flex-1 focus:outline-none"
         tabIndex={0}
         onKeyDown={handleKeyDown}
         onMouseUp={handleMouseUp}
@@ -779,14 +787,14 @@ const Grid: React.FC<GridProps> = React.memo(
               : "default",
         }}
       >
-        <table className="border-collapse">
-          <thead className="sticky top-0 bg-gray-200 z-10">
+        <table className="spreadsheet-table table-fixed w-full">
+          <thead className="sticky top-0 z-20">
             <tr>
-              <th className="w-12 h-10 border border-gray-400"></th>
+              <th className="column-header w-12 h-10"></th>
               {COLUMN_HEADERS.slice(0, VISIBLE_COLS).map((header, colIndex) => (
                 <th
                   key={colIndex}
-                  className="h-10 border border-gray-400 font-medium relative"
+                  className="column-header h-10 font-medium relative"
                   style={{
                     width: `${columnWidths[colIndex] || 96}px`,
                     minWidth: "50px",
@@ -796,7 +804,7 @@ const Grid: React.FC<GridProps> = React.memo(
 
                   {/* Column resize handle */}
                   <div
-                    className="absolute right-0 top-0 w-1 h-full cursor-col-resize bg-transparent hover:bg-blue-500 hover:w-2 z-20 transition-all duration-150"
+                    className="resize-handle-column"
                     onMouseDown={(e) => {
                       e.preventDefault();
                       handleColumnResize(colIndex, e.clientX);
@@ -817,17 +825,16 @@ const Grid: React.FC<GridProps> = React.memo(
                 style={{ height: `${rowHeights[rowIndex] || 40}px` }}
               >
                 <td
-                  className="w-12 border border-gray-400 bg-gray-100 text-center sticky left-0"
+                  className="row-header w-12"
                   style={{
                     height: `${rowHeights[rowIndex] || 40}px`,
-                    position: "relative",
                   }}
                 >
                   {rowIndex + 1}
 
                   {/* Row resize handle */}
                   <div
-                    className="absolute bottom-0 left-0 w-full h-1 cursor-row-resize bg-transparent hover:bg-blue-500 hover:h-2 z-20 transition-all duration-150"
+                    className="resize-handle-row"
                     onMouseDown={(e) => {
                       e.preventDefault();
                       handleRowResize(rowIndex, e.clientY);

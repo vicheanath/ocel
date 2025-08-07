@@ -1,0 +1,189 @@
+/* Grid component specific styles */
+
+.spreadsheet-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Cell states with proper layering */
+.cell-normal {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  position: relative;
+  z-index: 1;
+}
+
+.cell-selected {
+  background-color: #e0e7ff !important;
+  border: 1px solid #93c5fd;
+  position: relative;
+  z-index: 10;
+}
+
+.cell-active {
+  background-color: #ffffff !important;
+  border: 2px solid #1d4ed8 !important;
+  position: relative;
+  z-index: 20;
+}
+
+.cell-editing {
+  background-color: #ffffff !important;
+  border: 2px solid #1d4ed8 !important;
+  position: relative;
+  z-index: 30;
+}
+
+/* Input in editing state */
+.cell-edit-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  z-index: 35;
+  margin: 0;
+  padding: 4px 8px;
+  box-shadow: none;
+}
+
+.cell-edit-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Corner handle */
+.cell-corner-handle {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 8px;
+  height: 8px;
+  background-color: #1d4ed8;
+  border: 1px solid #ffffff;
+  border-radius: 1px;
+  cursor: se-resize;
+  z-index: 50;
+}
+
+.cell-corner-handle:hover {
+  background-color: #2563eb;
+}
+
+.cell-corner-handle.dragging {
+  cursor: grabbing;
+}
+
+/* Formula suggestions */
+.formula-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 60;
+  min-width: 250px;
+  max-width: 400px;
+  margin-top: 2px;
+}
+
+/* Header styles */
+.column-header {
+  background-color: #f3f4f6;
+  border: 1px solid #9ca3af;
+  font-weight: 500;
+  color: #374151;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+}
+
+.row-header {
+  background-color: #f3f4f6;
+  border: 1px solid #9ca3af;
+  font-weight: 500;
+  color: #374151;
+  text-align: center;
+  vertical-align: middle;
+  position: sticky;
+  left: 0;
+  z-index: 15;
+}
+
+/* Resize handles */
+.resize-handle-column {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  cursor: col-resize;
+  background: transparent;
+  z-index: 25;
+}
+
+.resize-handle-column:hover {
+  background-color: #3b82f6;
+  width: 6px;
+}
+
+.resize-handle-row {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  cursor: row-resize;
+  background: transparent;
+  z-index: 25;
+}
+
+.resize-handle-row:hover {
+  background-color: #3b82f6;
+  height: 6px;
+}
+
+/* Table improvements */
+.spreadsheet-container {
+  position: relative;
+  overflow: auto;
+  flex: 1;
+}
+
+.spreadsheet-container:focus {
+  outline: none;
+}
+
+/* Prevent text selection during drag */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Cell content alignment */
+.cell-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 4px 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cell-content.center {
+  justify-content: center;
+}
+
+.cell-content.right {
+  justify-content: flex-end;
+}
+
+.cell-content.left {
+  justify-content: flex-start;
+}
