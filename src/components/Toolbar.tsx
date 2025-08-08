@@ -22,8 +22,6 @@ import {
   ChevronUp,
   ChevronDown,
   BookOpen,
-  Square,
-  Minus,
 } from "lucide-react";
 import type { CellStyle } from "../types";
 
