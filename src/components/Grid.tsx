@@ -9,6 +9,7 @@ import React, {
 import type { SpreadsheetData, CellPosition, CellRange } from "../types";
 import { getCellId, parseCellId } from "../utils/spreadsheetUtils";
 import FormulaSuggestions from "./FormulaSuggestions";
+import ContextMenu, { type ContextMenuItem } from "./ContextMenu";
 import { useFormulaSuggestions } from "../hooks/useFormulaSuggestions";
 import { FormulaEngine } from "../formulaEngine/FormulaEngine";
 import "./Grid.css";
@@ -54,6 +55,11 @@ const Grid: React.FC<GridProps> = React.memo(
       index: number;
     } | null>(null);
     const [isApplyingSuggestion, setIsApplyingSuggestion] = useState(false);
+    const [contextMenu, setContextMenu] = useState<{
+      visible: boolean;
+      position: { x: number; y: number };
+      cellId: string;
+    } | null>(null);
     const gridRef = useRef<HTMLDivElement>(null);
     const editInputRef = useRef<HTMLInputElement>(null);
 
@@ -79,6 +85,20 @@ const Grid: React.FC<GridProps> = React.memo(
         gridRef.current.focus();
       }
     }, [selectedCell]);
+
+    // Close context menu on scroll or click
+    useEffect(() => {
+      const handleScroll = () => setContextMenu(null);
+      const handleClick = () => setContextMenu(null);
+
+      document.addEventListener("scroll", handleScroll, true);
+      document.addEventListener("click", handleClick);
+
+      return () => {
+        document.removeEventListener("scroll", handleScroll, true);
+        document.removeEventListener("click", handleClick);
+      };
+    }, []);
 
     // Focus edit input when editing starts
     useEffect(() => {
@@ -182,6 +202,111 @@ const Grid: React.FC<GridProps> = React.memo(
       },
       [mergedRangeMap]
     );
+
+    // Context menu items
+    const getContextMenuItems = useCallback((): ContextMenuItem[] => {
+      const hasContent = selectedCell && data[selectedCell]?.rawValue;
+      const hasSelection = selectedRange !== null;
+
+      return [
+        {
+          id: "copy",
+          label: "Copy",
+          icon: "📋",
+          onClick: () => {
+            // TODO: Implement copy functionality
+            console.log("Copy");
+          },
+        },
+        {
+          id: "paste",
+          label: "Paste",
+          icon: "📄",
+          onClick: () => {
+            // TODO: Implement paste functionality
+            console.log("Paste");
+          },
+        },
+        {
+          id: "cut",
+          label: "Cut",
+          icon: "✂️",
+          disabled: !hasContent,
+          onClick: () => {
+            // TODO: Implement cut functionality
+            console.log("Cut");
+          },
+        },
+        { separator: true } as ContextMenuItem,
+        {
+          id: "insert-row-above",
+          label: "Insert Row Above",
+          icon: "➕",
+          onClick: () => {
+            // TODO: Implement insert row above
+            console.log("Insert Row Above");
+          },
+        },
+        {
+          id: "insert-row-below",
+          label: "Insert Row Below",
+          icon: "➕",
+          onClick: () => {
+            // TODO: Implement insert row below
+            console.log("Insert Row Below");
+          },
+        },
+        {
+          id: "insert-column-left",
+          label: "Insert Column Left",
+          icon: "➕",
+          onClick: () => {
+            // TODO: Implement insert column left
+            console.log("Insert Column Left");
+          },
+        },
+        {
+          id: "insert-column-right",
+          label: "Insert Column Right",
+          icon: "➕",
+          onClick: () => {
+            // TODO: Implement insert column right
+            console.log("Insert Column Right");
+          },
+        },
+        { separator: true } as ContextMenuItem,
+        {
+          id: "delete-cells",
+          label: "Delete Cells",
+          icon: "🗑️",
+          disabled: !hasContent && !hasSelection,
+          onClick: () => {
+            if (hasSelection && selectedRange) {
+              // Delete range
+              const { start, end } = selectedRange;
+              for (let row = start.row; row <= end.row; row++) {
+                for (let col = start.col; col <= end.col; col++) {
+                  const cellId = getCellId({ row, col });
+                  onCellEdit(cellId, "");
+                }
+              }
+            } else {
+              // Delete single cell
+              onCellEdit(selectedCell, "");
+            }
+          },
+        },
+        {
+          id: "format-cells",
+          label: "Format Cells...",
+          icon: "🎨",
+          onClick: () => {
+            // TODO: Implement format cells dialog
+            console.log("Format Cells");
+          },
+        },
+      ];
+    }, [selectedCell, selectedRange, data, onCellEdit]);
 
     // Start editing cell
     const startEditing = useCallback(
@@ -417,7 +542,24 @@ const Grid: React.FC<GridProps> = React.memo(
     );
 
     const handleMouseDown = useCallback(
-      (row: number, col: number) => {
+      (row: number, col: number, e?: React.MouseEvent) => {
+        // Close context menu if open
+        setContextMenu(null);
+
+        // Handle right-click for context menu
+        if (e && e.button === 2) {
+          e.preventDefault();
+          const cellId = getCellId({ row, col });
+          onSelectCell(cellId);
+          setContextMenu({
+            visible: true,
+            position: { x: e.clientX, y: e.clientY },
+            cellId,
+          });
+          return;
+        }
+
+        // Normal left-click handling
         setDragStart({ row, col });
         onSelectCell(getCellId({ row, col }));
         cancelEditing(); // Cancel any ongoing edit
@@ -642,6 +784,23 @@ const Grid: React.FC<GridProps> = React.memo(
             return "cell-editing";
           } else if (isActiveCell) {
             return "cell-active";
+          } else if (isSelected && selectedRange) {
+            // For range selection, we need to determine edge cells
+            const { start, end } = selectedRange;
+            const isTopEdge = rowIndex === start.row;
+            const isBottomEdge = rowIndex === end.row;
+            const isLeftEdge = colIndex === start.col;
+            const isRightEdge = colIndex === end.col;
+
+            let className = "cell-range-selected";
+
+            // Add edge classes for unified border
+            if (isTopEdge) className += " range-top";
+            if (isBottomEdge) className += " range-bottom";
+            if (isLeftEdge) className += " range-left";
+            if (isRightEdge) className += " range-right";
+
+            return className;
           } else if (isSelected) {
             return "cell-selected";
           } else {
@@ -655,9 +814,15 @@ const Grid: React.FC<GridProps> = React.memo(
             className={getCellClassName()}
             colSpan={colSpan}
             rowSpan={rowSpan}
-            onMouseDown={() => handleMouseDown(rowIndex, colIndex)}
+            onMouseDown={(e) => handleMouseDown(rowIndex, colIndex, e)}
             onMouseEnter={() => handleMouseEnter(rowIndex, colIndex)}
             onDoubleClick={() => handleDoubleClick(rowIndex, colIndex)}
+            onContextMenu={(e) => {
+              e.preventDefault();
+              const mouseEvent = e as unknown as React.MouseEvent;
+              mouseEvent.button = 2;
+              handleMouseDown(rowIndex, colIndex, mouseEvent);
+            }}
             style={{
               color: cell?.style?.textColor || "#000000",
               fontWeight: cell?.style?.bold ? "bold" : "normal",
@@ -744,6 +909,7 @@ const Grid: React.FC<GridProps> = React.memo(
       },
       [
         selectedCell,
+        selectedRange,
         editingCell,
         editValue,
         getOrCreateCell,
@@ -852,6 +1018,15 @@ const Grid: React.FC<GridProps> = React.memo(
             ))}
           </tbody>
         </table>
+
+        {/* Context Menu */}
+        {contextMenu?.visible && (
+          <ContextMenu
+            items={getContextMenuItems()}
+            position={contextMenu.position}
+            onClose={() => setContextMenu(null)}
+          />
+        )}
       </div>
     );
   }

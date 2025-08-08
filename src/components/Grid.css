@@ -7,33 +7,329 @@
   table-layout: fixed;
 }
 
-/* Cell states with proper layering */
+/* Cell states with proper layering and animations */
 .cell-normal {
   background-color: #ffffff;
-  border: 1px solid #d1d5db;
+  border: 1px solid #e5e7eb;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
+  transition: all 0.15s ease-in-out;
+}
+
+.cell-normal:hover {
+  border-color: #cbd5e1;
+  background-color: #f8fafc;
 }
 
 .cell-selected {
-  background-color: #e0e7ff !important;
-  border: 1px solid #93c5fd;
+  background-color: #ffffff !important;
   position: relative;
   z-index: 10;
+  box-sizing: border-box;
+  transition: all 0.15s ease-in-out;
+
+  /* Remove all borders initially - they'll be added by pseudo-elements */
+  border: 1px solid transparent !important;
+}
+
+/* Selection border using pseudo-elements for unified appearance */
+.cell-selected::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px dashed #1d4ed8;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  animation: fadeIn 0.2s ease-out forwards;
 }
 
 .cell-active {
   background-color: #ffffff !important;
-  border: 2px solid #1d4ed8 !important;
   position: relative;
   z-index: 20;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+
+  /* Remove default border */
+  border: 1px solid transparent !important;
+}
+
+/* Active cell border with animation */
+.cell-active::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 3px solid #1d4ed8;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  animation: activeCell 0.3s ease-out forwards;
+  box-shadow: 0 0 0 1px rgba(29, 78, 216, 0.2);
 }
 
 .cell-editing {
   background-color: #ffffff !important;
-  border: 2px solid #1d4ed8 !important;
   position: relative;
   z-index: 30;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+
+  /* Remove default border */
+  border: 1px solid transparent !important;
+}
+
+/* Editing cell border with pulsing animation */
+.cell-editing::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 3px solid #1d4ed8;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  animation: editingCell 0.3s ease-out forwards,
+    editingPulse 2s ease-in-out infinite 0.5s;
+  box-shadow: 0 0 0 1px rgba(29, 78, 216, 0.3);
+}
+
+/* Range selection styling with unified border */
+.cell-range-selected {
+  background-color: rgba(29, 78, 216, 0.06) !important;
+  position: relative;
+  z-index: 5;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease-in-out;
+
+  /* Remove individual cell borders */
+  border: 1px solid transparent !important;
+}
+
+/* Range border edges - create unified selection border */
+.cell-range-selected.range-top {
+  border-top: 2px dashed #1d4ed8 !important;
+}
+
+.cell-range-selected.range-bottom {
+  border-bottom: 2px dashed #1d4ed8 !important;
+}
+
+.cell-range-selected.range-left {
+  border-left: 2px dashed #1d4ed8 !important;
+}
+
+.cell-range-selected.range-right {
+  border-right: 2px dashed #1d4ed8 !important;
+}
+
+/* Corner cells get multiple borders */
+.cell-range-selected.range-top.range-left {
+  border-top: 2px dashed #1d4ed8 !important;
+  border-left: 2px dashed #1d4ed8 !important;
+  animation: rangeSelectCorner 0.3s ease-out;
+}
+
+.cell-range-selected.range-top.range-right {
+  border-top: 2px dashed #1d4ed8 !important;
+  border-right: 2px dashed #1d4ed8 !important;
+  animation: rangeSelectCorner 0.3s ease-out;
+}
+
+.cell-range-selected.range-bottom.range-left {
+  border-bottom: 2px dashed #1d4ed8 !important;
+  border-left: 2px dashed #1d4ed8 !important;
+  animation: rangeSelectCorner 0.3s ease-out;
+}
+
+.cell-range-selected.range-bottom.range-right {
+  border-bottom: 2px dashed #1d4ed8 !important;
+  border-right: 2px dashed #1d4ed8 !important;
+  animation: rangeSelectCorner 0.3s ease-out;
+}
+
+/* Single cell range selection (when range is 1x1) */
+.cell-range-selected.range-top.range-bottom.range-left.range-right {
+  border: 2px dashed #1d4ed8 !important;
+  animation: singleCellRange 0.3s ease-out;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes activeCell {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(29, 78, 216, 0.4);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 1px rgba(29, 78, 216, 0.2);
+  }
+}
+
+@keyframes editingCell {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(29, 78, 216, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 1px rgba(29, 78, 216, 0.3);
+  }
+}
+
+@keyframes rangeSelect {
+  from {
+    opacity: 0;
+    border-width: 0;
+  }
+  to {
+    opacity: 1;
+    border-width: 1px;
+  }
+}
+
+@keyframes rangeSelectCorner {
+  from {
+    background-color: rgba(29, 78, 216, 0);
+    transform: scale(0.95);
+  }
+  50% {
+    background-color: rgba(29, 78, 216, 0.12);
+    transform: scale(1.02);
+  }
+  to {
+    background-color: rgba(29, 78, 216, 0.06);
+    transform: scale(1);
+  }
+}
+
+@keyframes singleCellRange {
+  from {
+    background-color: rgba(29, 78, 216, 0);
+    transform: scale(0.9);
+    border-width: 0;
+  }
+  50% {
+    background-color: rgba(29, 78, 216, 0.15);
+    transform: scale(1.05);
+  }
+  to {
+    background-color: rgba(29, 78, 216, 0.06);
+    transform: scale(1);
+    border-width: 2px;
+  }
+}
+
+@keyframes cornerHandleAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.3) rotate(-45deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(0deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes editingPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(29, 78, 216, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.5);
+  }
+}
+
+/* Context menu styles */
+.context-menu {
+  position: fixed;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  min-width: 180px;
+  max-width: 280px;
+  padding: 4px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  user-select: none;
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: #374151;
+  transition: background-color 0.1s ease;
+  white-space: nowrap;
+}
+
+.context-menu-item:hover:not(.disabled) {
+  background-color: #0078d4;
+  color: white;
+}
+
+.context-menu-item.disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.context-menu-item.disabled:hover {
+  background-color: transparent;
+  color: #9ca3af;
+}
+
+.context-menu-divider {
+  height: 1px;
+  background-color: #e5e7eb;
+  margin: 4px 0;
+}
+
+.context-menu-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
 }
 
 /* Input in editing state */
@@ -56,7 +352,7 @@
   box-shadow: none;
 }
 
-/* Corner handle */
+/* Corner handle with animation */
 .cell-corner-handle {
   position: absolute;
   bottom: -1px;
@@ -64,18 +360,26 @@
   width: 8px;
   height: 8px;
   background-color: #1d4ed8;
-  border: 1px solid #ffffff;
+  border: 2px solid #ffffff;
   border-radius: 1px;
   cursor: se-resize;
   z-index: 50;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s ease-out;
+  animation: cornerHandleAppear 0.3s ease-out 0.1s forwards;
 }
 
 .cell-corner-handle:hover {
   background-color: #2563eb;
+  transform: scale(1.1);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
 }
 
 .cell-corner-handle.dragging {
   cursor: grabbing;
+  transform: scale(1.2);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
 }
 
 /* Formula suggestions */
