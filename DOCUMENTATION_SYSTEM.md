@@ -61,11 +61,6 @@ A complete TypeScript-based documentation generation system with React Router re
 npm run docs:data
 # OR
 npx tsx scripts/generateDocsData.ts
-
-# Legacy JavaScript generators
-npm run docs:all    # All markdown files
-npm run docs:db     # Database functions only
-npm run docs:html   # Standalone HTML viewer
 ```
 
 ### Development
@@ -103,8 +98,8 @@ src/docs/
 
 scripts/
 ├── generateDocsData.ts     # TypeScript generator (recommended)
-├── generateAllFunctionsDocs.js  # Legacy JS generator
 ├── generateDatabaseFunctionsDocs.js  # DB-specific generator
+├── copyMarkdownFiles.js    # Copy docs to public folder
 └── README.md              # Script documentation
 
 docs/                      # Generated markdown files

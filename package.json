@@ -4,17 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npm run docs:copy-md && vite",
+    "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "docs:db": "node scripts/generateDatabaseFunctionsDocs.js",
-    "docs:all": "node scripts/generateAllFunctionsDocs.js",
-    "docs:html": "node scripts/generateHtmlDocs.js",
-    "docs:generate": "npm run docs:all && npm run docs:html",
     "docs:data": "npx tsx scripts/generateDocsData.ts",
-    "docs:build": "npm run docs:data && npm run docs:copy-md && npm run build",
-    "docs:copy-md": "node scripts/copyMarkdownFiles.js"
+    "docs:build": "npm run docs:data && npm run build"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",

@@ -1,5 +1,5 @@
 // Auto-generated types for function documentation
-// Generated on: 2025-08-07T20:41:38.540Z
+// Generated on: 2025-08-08T00:17:43.099Z
 
 export interface FunctionDoc {
   name: string;

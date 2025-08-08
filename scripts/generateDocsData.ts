@@ -298,10 +298,10 @@ async function main() {
     };
 
     // Create output directories
-    const docsDir = path.join(__dirname, "../docs");
+    const publicDocsDir = path.join(__dirname, "../public/docs");
     const srcDocsDir = path.join(__dirname, "../src/docs");
 
-    [docsDir, srcDocsDir].forEach((dir) => {
+    [publicDocsDir, srcDocsDir].forEach((dir) => {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
@@ -359,7 +359,7 @@ export const FUNCTION_CATEGORIES = ${JSON.stringify(
     categories.forEach((category) => {
       const categoryMarkdown = generateCategoryMarkdown(category);
       const categoryFileName = `${category.name}.md`;
-      const categoryPath = path.join(docsDir, categoryFileName);
+      const categoryPath = path.join(publicDocsDir, categoryFileName);
 
       fs.writeFileSync(categoryPath, categoryMarkdown, "utf8");
       console.log(`  📄 Category docs saved to: ${categoryFileName}`);
@@ -367,7 +367,7 @@ export const FUNCTION_CATEGORIES = ${JSON.stringify(
 
     // Generate comprehensive markdown
     const comprehensiveMarkdown = generateComprehensiveMarkdown(docsData);
-    const comprehensivePath = path.join(docsDir, "complete-reference.md");
+    const comprehensivePath = path.join(publicDocsDir, "complete-reference.md");
     fs.writeFileSync(comprehensivePath, comprehensiveMarkdown, "utf8");
 
     console.log("\n✅ Documentation generation complete!");

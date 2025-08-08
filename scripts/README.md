@@ -18,60 +18,39 @@ node scripts/generateDatabaseFunctionsDocs.js
 
 **Output:** `docs/DATABASE_FUNCTIONS.md`
 
-### 📚 `generateAllFunctionsDocs.js`
+### � `generateDocsData.ts` (Recommended)
 
-Generates markdown documentation for ALL function categories.
+TypeScript-based documentation generator that creates structured data for the React documentation app.
 
 **Usage:**
 
 ```bash
-npm run docs:all
+npm run docs:data
 # or
-node scripts/generateAllFunctionsDocs.js
+npx tsx scripts/generateDocsData.ts
 ```
 
 **Outputs:**
 
-- `docs/FUNCTIONS_REFERENCE.md` - Comprehensive reference
-- Individual category files: `docs/DATABASEFUNCTIONS.md`, `docs/MATHFUNCTIONS.md`, etc.
-
-### 🌐 `generateHtmlDocs.js`
-
-Generates an interactive HTML documentation viewer.
-
-**Usage:**
-
-```bash
-npm run docs:html
-# or
-node scripts/generateHtmlDocs.js
-```
-
-**Output:** `docs/index.html` - Interactive web viewer
-
-### 🚀 `docs:generate` (Combined)
-
-Runs both the markdown and HTML generators.
-
-**Usage:**
-
-```bash
-npm run docs:generate
-```
+- `src/docs/functionsData.json` - Structured data for React app
+- `src/docs/types.ts` - Auto-generated TypeScript interfaces
+- `docs/*.md` - Individual category markdown files
 
 ## Generated Documentation
 
 After running the scripts, you'll find:
 
 ```
-docs/
-├── index.html                    # Interactive web viewer
-├── FUNCTIONS_REFERENCE.md        # Complete function reference
-├── DATABASE_FUNCTIONS.md         # Database functions only
-├── DATABASEFUNCTIONS.MD          # Individual category files
-├── MATHFUNCTIONS.MD
-├── TEXTFUNCTIONS.MD
-└── ... (other categories)
+public/docs/
+├── complete-reference.md         # Complete function reference
+├── database.md                   # Database functions category
+├── math-trigonometry.md          # Math functions category
+├── text.md                      # Text functions category
+└── ... (other category files)
+
+src/docs/
+├── functionsData.json           # Structured data for React app
+└── types.ts                     # Auto-generated TypeScript types
 ```
 
 ## Features
@@ -84,13 +63,12 @@ docs/
 - ✅ Category organization
 - ✅ Best practices and usage notes
 
-### HTML Documentation Viewer
+### TypeScript Data Generation
 
-- 🔍 Interactive search functionality
-- 📱 Responsive sidebar navigation
-- 🎨 Modern, clean interface
-- ⚡ Client-side filtering
-- 📊 Function statistics
+- ✅ Structured JSON data for React apps
+- ✅ Auto-generated TypeScript interfaces
+- ✅ Type-safe function metadata
+- ✅ Category-based organization
 
 ## Function Categories Covered
 
@@ -155,9 +133,9 @@ The scripts automatically detect and document functions from these categories:
 
 To modify the documentation format:
 
-1. Edit the `generateMarkdown()` function in the respective scripts
-2. Modify the HTML template in `generateHtmlDocs.js`
-3. Add new function categories to the `functionFiles` array
+1. Edit the `generateDocsData.ts` script for TypeScript/JSON generation
+2. Edit the `generateDatabaseFunctionsDocs.js` script for database-specific docs
+3. Add new function categories to the `functionFiles` array in `generateDocsData.ts`
 4. Update parsing regex patterns if function registration format changes
 
 ## Development Notes
@@ -174,7 +152,7 @@ When adding new functions:
 
 1. Follow the existing `registry.register()` format
 2. Include proper metadata (description, syntax, examples)
-3. Re-run `npm run docs:generate` to update documentation
+3. Re-run `npm run docs:data` to update documentation
 4. Commit both code and generated docs
 
 ---
