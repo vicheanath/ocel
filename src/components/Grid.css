@@ -163,6 +163,66 @@
   animation: singleCellRange 0.3s ease-out;
 }
 
+/* Function argument selection styling */
+.cell-function-arg-selected {
+  background-color: rgba(34, 197, 94, 0.1) !important;
+  position: relative;
+  z-index: 15;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease-in-out;
+
+  /* Remove individual cell borders */
+  border: 1px solid transparent !important;
+}
+
+/* Function argument range border edges */
+.cell-function-arg-selected.range-top {
+  border-top: 2px solid #22c55e !important;
+}
+
+.cell-function-arg-selected.range-bottom {
+  border-bottom: 2px solid #22c55e !important;
+}
+
+.cell-function-arg-selected.range-left {
+  border-left: 2px solid #22c55e !important;
+}
+
+.cell-function-arg-selected.range-right {
+  border-right: 2px solid #22c55e !important;
+}
+
+/* Function argument corner cells */
+.cell-function-arg-selected.range-top.range-left {
+  border-top: 2px solid #22c55e !important;
+  border-left: 2px solid #22c55e !important;
+  animation: functionArgCorner 0.2s ease-out;
+}
+
+.cell-function-arg-selected.range-top.range-right {
+  border-top: 2px solid #22c55e !important;
+  border-right: 2px solid #22c55e !important;
+  animation: functionArgCorner 0.2s ease-out;
+}
+
+.cell-function-arg-selected.range-bottom.range-left {
+  border-bottom: 2px solid #22c55e !important;
+  border-left: 2px solid #22c55e !important;
+  animation: functionArgCorner 0.2s ease-out;
+}
+
+.cell-function-arg-selected.range-bottom.range-right {
+  border-bottom: 2px solid #22c55e !important;
+  border-right: 2px solid #22c55e !important;
+  animation: functionArgCorner 0.2s ease-out;
+}
+
+/* Single cell function argument selection */
+.cell-function-arg-selected.range-top.range-bottom.range-left.range-right {
+  border: 2px solid #22c55e !important;
+  animation: functionArgSingle 0.2s ease-out;
+}
+
 /* Keyframe animations */
 @keyframes fadeIn {
   from {
@@ -272,6 +332,38 @@
   }
   50% {
     box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.5);
+  }
+}
+
+@keyframes functionArgCorner {
+  from {
+    background-color: rgba(34, 197, 94, 0);
+    transform: scale(0.95);
+  }
+  50% {
+    background-color: rgba(34, 197, 94, 0.2);
+    transform: scale(1.02);
+  }
+  to {
+    background-color: rgba(34, 197, 94, 0.1);
+    transform: scale(1);
+  }
+}
+
+@keyframes functionArgSingle {
+  from {
+    background-color: rgba(34, 197, 94, 0);
+    transform: scale(0.9);
+    border-width: 0;
+  }
+  50% {
+    background-color: rgba(34, 197, 94, 0.25);
+    transform: scale(1.05);
+  }
+  to {
+    background-color: rgba(34, 197, 94, 0.1);
+    transform: scale(1);
+    border-width: 2px;
   }
 }
 
@@ -460,6 +552,16 @@
   outline: none;
 }
 
+/* Dragging state cursor */
+.spreadsheet-container.dragging {
+  cursor: crosshair;
+  user-select: none;
+}
+
+.spreadsheet-container.function-mode {
+  cursor: copy;
+}
+
 /* Prevent text selection during drag */
 .no-select {
   -webkit-user-select: none;
@@ -490,4 +592,142 @@
 
 .cell-content.left {
   justify-content: flex-start;
+}
+
+/* Function mode indicator */
+.function-mode-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1001;
+  opacity: 0;
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.function-mode-text {
+  background: rgba(34, 197, 94, 0.9);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  backdrop-filter: blur(8px);
+  text-align: center;
+  min-width: 280px;
+}
+
+.function-mode-text small {
+  opacity: 0.8;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.range-preview {
+  color: #dcfce7;
+  font-weight: 600;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin: 0 4px;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Function Reference Highlighting */
+.cell-function-reference {
+  position: relative;
+  background: rgba(31, 119, 180, 0.1);
+  animation: functionRefPulse 0.3s ease-in-out;
+}
+
+.cell-function-reference.range-top {
+  border-top: 2px solid #1f77b4;
+}
+
+.cell-function-reference.range-bottom {
+  border-bottom: 2px solid #1f77b4;
+}
+
+.cell-function-reference.range-left {
+  border-left: 2px solid #1f77b4;
+}
+
+.cell-function-reference.range-right {
+  border-right: 2px solid #1f77b4;
+}
+
+.cell-function-reference.range-top.range-left::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 8px;
+  height: 8px;
+  background: #1f77b4;
+  border: 2px solid white;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+@keyframes functionRefPulse {
+  0% {
+    background: rgba(31, 119, 180, 0.2);
+    transform: scale(1.02);
+  }
+  50% {
+    background: rgba(31, 119, 180, 0.15);
+    transform: scale(1);
+  }
+  100% {
+    background: rgba(31, 119, 180, 0.1);
+    transform: scale(1);
+  }
+}
+
+/* Formula Reference Highlighting - Cells referenced in formulas */
+.cell-formula-ref {
+  background: rgba(31, 119, 180, 0.15);
+  border: 2px solid #1f77b4;
+  animation: formulaRefPulse 0.6s ease-in-out;
+  position: relative;
+}
+
+.cell-formula-ref::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 10px;
+  height: 10px;
+  background: #1f77b4;
+  border: 2px solid white;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+@keyframes formulaRefPulse {
+  0% {
+    background: rgba(31, 119, 180, 0.25);
+    box-shadow: 0 0 8px rgba(31, 119, 180, 0.4);
+  }
+  50% {
+    background: rgba(31, 119, 180, 0.2);
+    box-shadow: 0 0 12px rgba(31, 119, 180, 0.3);
+  }
+  100% {
+    background: rgba(31, 119, 180, 0.15);
+    box-shadow: 0 0 6px rgba(31, 119, 180, 0.2);
+  }
 }

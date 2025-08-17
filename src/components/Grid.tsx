@@ -60,6 +60,9 @@ const Grid: React.FC<GridProps> = React.memo(
       position: { x: number; y: number };
       cellId: string;
     } | null>(null);
+
+    // Track highlighted cell references in formulas
+    const [highlightedRefs, setHighlightedRefs] = useState<string[]>([]);
     const gridRef = useRef<HTMLDivElement>(null);
     const editInputRef = useRef<HTMLInputElement>(null);
 
@@ -308,6 +311,55 @@ const Grid: React.FC<GridProps> = React.memo(
       ];
     }, [selectedCell, selectedRange, data, onCellEdit]);
 
+    // Extract cell references from formula
+    const extractFormulaReferences = useCallback(
+      (formula: string): string[] => {
+        if (!formula.startsWith("=")) return [];
+
+        const referencePattern = /[A-Z]+\d+(?::[A-Z]+\d+)?/g;
+        const matches = formula.match(referencePattern);
+
+        if (!matches) return [];
+
+        // Expand ranges into individual cells
+        const cellIds: string[] = [];
+
+        matches.forEach((match) => {
+          if (match.includes(":")) {
+            // It's a range like A1:C3
+            const [start, end] = match.split(":");
+            const startRow = parseInt(start.replace(/[A-Z]+/, "")) - 1;
+            const startCol = start.replace(/\d+/, "").charCodeAt(0) - 65;
+            const endRow = parseInt(end.replace(/[A-Z]+/, "")) - 1;
+            const endCol = end.replace(/\d+/, "").charCodeAt(0) - 65;
+
+            // Add all cells in the range
+            for (
+              let r = Math.min(startRow, endRow);
+              r <= Math.max(startRow, endRow);
+              r++
+            ) {
+              for (
+                let c = Math.min(startCol, endCol);
+                c <= Math.max(startCol, endCol);
+                c++
+              ) {
+                cellIds.push(getCellId({ row: r, col: c }));
+              }
+            }
+          } else {
+            // It's a single cell like A1
+            const row = parseInt(match.replace(/[A-Z]+/, "")) - 1;
+            const col = match.replace(/\d+/, "").charCodeAt(0) - 65;
+            cellIds.push(getCellId({ row, col }));
+          }
+        });
+
+        return cellIds;
+      },
+      []
+    );
+
     // Start editing cell
     const startEditing = useCallback(
       (initialValue?: string) => {
@@ -319,18 +371,33 @@ const Grid: React.FC<GridProps> = React.memo(
             : currentCell?.rawValue || "";
         setEditValue(newValue);
 
+        // Extract and highlight formula references if it's a formula
+        if (newValue.startsWith("=")) {
+          const references = extractFormulaReferences(newValue);
+          setHighlightedRefs(references);
+        } else {
+          setHighlightedRefs([]);
+        }
+
         // Update suggestions if it's a formula
         if (formulaEngine && newValue.startsWith("=")) {
           updateSuggestions(newValue);
         }
       },
-      [selectedCell, data, formulaEngine, updateSuggestions]
+      [
+        selectedCell,
+        data,
+        formulaEngine,
+        updateSuggestions,
+        extractFormulaReferences,
+      ]
     );
 
     // Cancel editing
     const cancelEditing = useCallback(() => {
       setEditingCell(null);
       setEditValue("");
+      setHighlightedRefs([]); // Clear highlights when canceling
       hideSuggestions();
     }, [hideSuggestions]);
 
@@ -340,6 +407,7 @@ const Grid: React.FC<GridProps> = React.memo(
         onCellEdit(editingCell, editValue);
         setEditingCell(null);
         setEditValue("");
+        setHighlightedRefs([]); // Clear highlights when done editing
         hideSuggestions();
       }
     }, [editingCell, editValue, onCellEdit, hideSuggestions]);
@@ -784,6 +852,9 @@ const Grid: React.FC<GridProps> = React.memo(
             return "cell-editing";
           } else if (isActiveCell) {
             return "cell-active";
+          } else if (highlightedRefs.includes(cellId)) {
+            // This cell is referenced in the current formula being edited
+            return "cell-formula-ref";
           } else if (isSelected && selectedRange) {
             // For range selection, we need to determine edge cells
             const { start, end } = selectedRange;
@@ -910,6 +981,7 @@ const Grid: React.FC<GridProps> = React.memo(
       [
         selectedCell,
         selectedRange,
+        highlightedRefs,
         editingCell,
         editValue,
         getOrCreateCell,
