@@ -17,6 +17,9 @@ dependencies:
   file-saver:
     specifier: ^2.0.5
     version: 2.0.5
+  immer:
+    specifier: ^10.1.1
+    version: 10.1.1
   lucide-react:
     specifier: ^0.537.0
     version: 0.537.0(react@19.1.1)
@@ -35,6 +38,9 @@ dependencies:
   xlsx:
     specifier: ^0.18.5
     version: 0.18.5
+  zustand:
+    specifier: ^5.0.8
+    version: 5.0.8(@types/react@19.1.9)(immer@10.1.1)(react@19.1.1)
 
 devDependencies:
   '@eslint/js':
@@ -1639,6 +1645,10 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /immer@10.1.1:
+    resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
+    dev: false
+
   /import-fresh@3.3.1:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
     engines: {node: '>=6'}
@@ -2354,3 +2364,26 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zustand@5.0.8(@types/react@19.1.9)(immer@10.1.1)(react@19.1.1):
+    resolution: {integrity: sha512-gyPKpIaxY9XcO2vSMrLbiER7QMAMGOQZVRdJ6Zi782jkbzZygq5GI9nG8g+sMgitRtndwaBSl7uiqC49o1SSiw==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=18.0.0'
+      immer: '>=9.0.6'
+      react: '>=18.0.0'
+      use-sync-external-store: '>=1.2.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+      use-sync-external-store:
+        optional: true
+    dependencies:
+      '@types/react': 19.1.9
+      immer: 10.1.1
+      react: 19.1.1
+    dev: false
