@@ -498,13 +498,13 @@ const OptimizedGrid: React.FC<OptimizedGridProps> = React.memo(
         {
           id: "copy",
           label: "Copy",
-          icon: "📋",
+          icon: "??",
           onClick: () => console.log("Copy"),
         },
         {
           id: "paste",
           label: "Paste",
-          icon: "📄",
+          icon: "??",
           onClick: () => console.log("Paste"),
         },
       ],
@@ -604,6 +604,43 @@ const OptimizedGrid: React.FC<OptimizedGridProps> = React.memo(
     ]);
 
     // Render headers
+    const selectedColumns = useMemo(() => {
+      const columns = new Set<number>();
+
+      if (selectedRange) {
+        const startCol = Math.min(selectedRange.start.col, selectedRange.end.col);
+        const endCol = Math.max(selectedRange.start.col, selectedRange.end.col);
+
+        for (let col = startCol; col <= endCol; col++) {
+          columns.add(col);
+        }
+      } else if (selectedCell) {
+        const { col } = parseCellId(selectedCell);
+        columns.add(col);
+      }
+
+      return columns;
+    }, [selectedCell, selectedRange]);
+
+    const selectedRows = useMemo(() => {
+      const rows = new Set<number>();
+
+      if (selectedRange) {
+        const startRow = Math.min(selectedRange.start.row, selectedRange.end.row);
+        const endRow = Math.max(selectedRange.start.row, selectedRange.end.row);
+
+        for (let row = startRow; row <= endRow; row++) {
+          rows.add(row);
+        }
+      } else if (selectedCell) {
+        const { row } = parseCellId(selectedCell);
+        rows.add(row);
+      }
+
+      return rows;
+    }, [selectedCell, selectedRange]);
+
+    // Render headers
     const renderHeaders = useCallback(() => {
       const headers: React.ReactNode[] = [];
 
@@ -611,26 +648,36 @@ const OptimizedGrid: React.FC<OptimizedGridProps> = React.memo(
       for (let col = viewport.startCol; col <= viewport.endCol; col++) {
         const x = columnPositions[col] - scrollPosition.x;
         const width = getColumnWidth(col);
+        const isSelectedColumn = selectedColumns.has(col);
 
         if (x + width < HEADER_WIDTH || x > containerSize.width) continue;
 
         headers.push(
           <div
             key={`col-${col}`}
+            className={`column-header${
+              isSelectedColumn ? " column-header-selected" : ""
+            }`}
             style={{
               position: "absolute",
               left: x,
               top: 0,
               width,
               height: HEADER_HEIGHT,
-              backgroundColor: "#f5f5f5",
-              border: "1px solid #d0d0d0",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontWeight: "bold",
+              fontWeight: isSelectedColumn ? 600 : "bold",
               fontSize: "12px",
-              color: "#333",
+              color: isSelectedColumn ? "#1d4ed8" : "#333",
+              border: `1px solid ${
+                isSelectedColumn ? "#1d4ed8" : "#d0d0d0"
+              }`,
+              boxShadow: isSelectedColumn ? "inset 0 -3px 0 #1d4ed8" : "none",
+              background: isSelectedColumn
+                ? "linear-gradient(180deg, #e0ecff 0%, #d1e3ff 100%)"
+                : "#f5f5f5",
+              zIndex: isSelectedColumn ? 30 : 10,
             }}
           >
             {COLUMN_HEADERS[col] || ""}
@@ -642,26 +689,36 @@ const OptimizedGrid: React.FC<OptimizedGridProps> = React.memo(
       for (let row = viewport.startRow; row <= viewport.endRow; row++) {
         const y = rowPositions[row] - scrollPosition.y;
         const height = getRowHeight(row);
+        const isSelectedRow = selectedRows.has(row);
 
         if (y + height < HEADER_HEIGHT || y > containerSize.height) continue;
 
         headers.push(
           <div
             key={`row-${row}`}
+            className={`row-header${
+              isSelectedRow ? " row-header-selected" : ""
+            }`}
             style={{
               position: "absolute",
               left: 0,
               top: y,
               width: HEADER_WIDTH,
               height,
-              backgroundColor: "#f5f5f5",
-              border: "1px solid #d0d0d0",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontWeight: "bold",
+              fontWeight: isSelectedRow ? 600 : "bold",
               fontSize: "12px",
-              color: "#333",
+              color: isSelectedRow ? "#1d4ed8" : "#333",
+              border: `1px solid ${
+                isSelectedRow ? "#1d4ed8" : "#d0d0d0"
+              }`,
+              boxShadow: isSelectedRow ? "inset -3px 0 0 #1d4ed8" : "none",
+              background: isSelectedRow
+                ? "linear-gradient(90deg, #e0ecff 0%, #d1e3ff 100%)"
+                : "#f5f5f5",
+              zIndex: isSelectedRow ? 30 : 10,
             }}
           >
             {row + 1}
@@ -678,6 +735,8 @@ const OptimizedGrid: React.FC<OptimizedGridProps> = React.memo(
       getColumnWidth,
       getRowHeight,
       containerSize,
+      selectedColumns,
+      selectedRows,
     ]);
 
     return (
