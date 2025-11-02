@@ -206,6 +206,42 @@ const Grid: React.FC<GridProps> = React.memo(
       [mergedRangeMap]
     );
 
+    const selectedColumns = useMemo(() => {
+      const columns = new Set<number>();
+
+      if (selectedRange) {
+        const startCol = Math.min(selectedRange.start.col, selectedRange.end.col);
+        const endCol = Math.max(selectedRange.start.col, selectedRange.end.col);
+
+        for (let col = startCol; col <= endCol; col++) {
+          columns.add(col);
+        }
+      } else if (selectedCell) {
+        const { col } = parseCellId(selectedCell);
+        columns.add(col);
+      }
+
+      return columns;
+    }, [selectedCell, selectedRange]);
+
+    const selectedRows = useMemo(() => {
+      const rows = new Set<number>();
+
+      if (selectedRange) {
+        const startRow = Math.min(selectedRange.start.row, selectedRange.end.row);
+        const endRow = Math.max(selectedRange.start.row, selectedRange.end.row);
+
+        for (let row = startRow; row <= endRow; row++) {
+          rows.add(row);
+        }
+      } else if (selectedCell) {
+        const { row } = parseCellId(selectedCell);
+        rows.add(row);
+      }
+
+      return rows;
+    }, [selectedCell, selectedRange]);
+
     // Context menu items
     const getContextMenuItems = useCallback((): ContextMenuItem[] => {
       const hasContent = selectedCell && data[selectedCell]?.rawValue;
@@ -1032,7 +1068,9 @@ const Grid: React.FC<GridProps> = React.memo(
               {COLUMN_HEADERS.slice(0, VISIBLE_COLS).map((header, colIndex) => (
                 <th
                   key={colIndex}
-                  className="column-header h-10 font-medium relative"
+                  className={`column-header h-10 font-medium relative${
+                    selectedColumns.has(colIndex) ? " column-header-selected" : ""
+                  }`}
                   style={{
                     width: `${columnWidths[colIndex] || 96}px`,
                     minWidth: "50px",
@@ -1063,7 +1101,9 @@ const Grid: React.FC<GridProps> = React.memo(
                 style={{ height: `${rowHeights[rowIndex] || 40}px` }}
               >
                 <td
-                  className="row-header w-12"
+                  className={`row-header w-12${
+                    selectedRows.has(rowIndex) ? " row-header-selected" : ""
+                  }`}
                   style={{
                     height: `${rowHeights[rowIndex] || 40}px`,
                   }}

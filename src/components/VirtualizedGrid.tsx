@@ -259,6 +259,42 @@ const VirtualizedGrid: React.FC<VirtualizedGridProps> = React.memo(
     }, []);
 
     // Canvas rendering for high performance
+    const selectedColumns = useMemo(() => {
+      const columns = new Set<number>();
+
+      if (selectedRange) {
+        const startCol = Math.min(selectedRange.start.col, selectedRange.end.col);
+        const endCol = Math.max(selectedRange.start.col, selectedRange.end.col);
+
+        for (let col = startCol; col <= endCol; col++) {
+          columns.add(col);
+        }
+      } else if (selectedCell) {
+        const { col } = parseCellId(selectedCell);
+        columns.add(col);
+      }
+
+      return columns;
+    }, [selectedCell, selectedRange]);
+
+    const selectedRows = useMemo(() => {
+      const rows = new Set<number>();
+
+      if (selectedRange) {
+        const startRow = Math.min(selectedRange.start.row, selectedRange.end.row);
+        const endRow = Math.max(selectedRange.start.row, selectedRange.end.row);
+
+        for (let row = startRow; row <= endRow; row++) {
+          rows.add(row);
+        }
+      } else if (selectedCell) {
+        const { row } = parseCellId(selectedCell);
+        rows.add(row);
+      }
+
+      return rows;
+    }, [selectedCell, selectedRange]);
+
     const renderCanvas = useCallback(() => {
       const canvas = canvasRef.current;
       if (!canvas) return;
@@ -362,16 +398,27 @@ const VirtualizedGrid: React.FC<VirtualizedGridProps> = React.memo(
       for (let col = startCol; col <= endCol; col++) {
         const x = columnPositions[col] - scrollPosition.x;
         const cellWidth = getColumnWidth(col);
+        const isSelectedColumn = selectedColumns.has(col);
 
         if (x + cellWidth < HEADER_WIDTH || x > width) continue;
 
-        ctx.fillStyle = "#f5f5f5";
+        ctx.fillStyle = isSelectedColumn ? "#d1e3ff" : "#f5f5f5";
         ctx.fillRect(x, -scrollPosition.y, cellWidth, HEADER_HEIGHT);
 
-        ctx.strokeStyle = "#d0d0d0";
+        ctx.strokeStyle = isSelectedColumn ? "#1d4ed8" : "#d0d0d0";
         ctx.strokeRect(x, -scrollPosition.y, cellWidth, HEADER_HEIGHT);
 
-        ctx.fillStyle = "#333";
+        if (isSelectedColumn) {
+          ctx.fillStyle = "#1d4ed8";
+          ctx.fillRect(
+            x,
+            -scrollPosition.y + HEADER_HEIGHT - 3,
+            cellWidth,
+            3
+          );
+        }
+
+        ctx.fillStyle = isSelectedColumn ? "#1d4ed8" : "#333";
         ctx.textAlign = "center";
         ctx.fillText(
           COLUMN_HEADERS[col] || "",
@@ -387,16 +434,27 @@ const VirtualizedGrid: React.FC<VirtualizedGridProps> = React.memo(
       for (let row = startRow; row <= endRow; row++) {
         const y = rowPositions[row] - scrollPosition.y;
         const cellHeight = getRowHeight(row);
+        const isSelectedRow = selectedRows.has(row);
 
         if (y + cellHeight < HEADER_HEIGHT || y > height) continue;
 
-        ctx.fillStyle = "#f5f5f5";
+        ctx.fillStyle = isSelectedRow ? "#d1e3ff" : "#f5f5f5";
         ctx.fillRect(-scrollPosition.x, y, HEADER_WIDTH, cellHeight);
 
-        ctx.strokeStyle = "#d0d0d0";
+        ctx.strokeStyle = isSelectedRow ? "#1d4ed8" : "#d0d0d0";
         ctx.strokeRect(-scrollPosition.x, y, HEADER_WIDTH, cellHeight);
 
-        ctx.fillStyle = "#333";
+        if (isSelectedRow) {
+          ctx.fillStyle = "#1d4ed8";
+          ctx.fillRect(
+            -scrollPosition.x,
+            y,
+            3,
+            cellHeight
+          );
+        }
+
+        ctx.fillStyle = isSelectedRow ? "#1d4ed8" : "#333";
         ctx.textAlign = "center";
         ctx.fillText(
           String(row + 1),
@@ -415,6 +473,8 @@ const VirtualizedGrid: React.FC<VirtualizedGridProps> = React.memo(
       getRowHeight,
       selectedCell,
       selectedRange,
+      selectedColumns,
+      selectedRows,
     ]);
 
     // Re-render canvas when data changes
@@ -596,13 +656,13 @@ const VirtualizedGrid: React.FC<VirtualizedGridProps> = React.memo(
         {
           id: "copy",
           label: "Copy",
-          icon: "📋",
+          icon: "??",
           onClick: () => console.log("Copy"),
         },
         {
           id: "paste",
           label: "Paste",
-          icon: "📄",
+          icon: "??",
           onClick: () => console.log("Paste"),
         },
       ];
